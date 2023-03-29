@@ -1,6 +1,6 @@
 <?php
 
-use dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPage;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\YiiMessage;

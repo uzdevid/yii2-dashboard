@@ -3,9 +3,9 @@
 namespace uzdevid\dashboard\controllers;
 
 use uzdevid\dashboard\components\BaseController;
-use dashboard\modalpage\ModalPage;
-use dashboard\modalpage\ModalPageOptions;
-use uzdevid\dashboard\components\Toaster\Toaster;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPageOptions;
+use uzdevid\dashboard\toaster\Toaster;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
 use uzdevid\dashboard\models\YiiSourceMessage;

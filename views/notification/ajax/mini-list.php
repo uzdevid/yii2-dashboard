@@ -1,6 +1,6 @@
 <?php
 
-use dashboard\offcanvaspage\OffCanvas;
+use uzdevid\dashboard\offcanvaspage\OffCanvas;
 use dashboard\SideBar\View;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\Notification;

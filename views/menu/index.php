@@ -3,7 +3,7 @@
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\service\MenuService;
-use dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPage;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;

@@ -2,9 +2,9 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use dashboard\modalpage\ModalPage;
-use dashboard\offcanvaspage\OffCanvas;
-use dashboard\offcanvaspage\OffCanvasOptions;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\offcanvaspage\OffCanvas;
+use uzdevid\dashboard\offcanvaspage\OffCanvasOptions;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\Notification;
 use Yii;

@@ -4,9 +4,9 @@ namespace uzdevid\dashboard\controllers;
 
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\Contact;
-use dashboard\modalpage\ModalPage;
-use dashboard\modalpage\ModalPageOptions;
-use dashboard\toaster\Toaster;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPageOptions;
+use uzdevid\dashboard\toaster\Toaster;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;

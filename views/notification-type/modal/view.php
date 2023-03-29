@@ -1,6 +1,6 @@
 <?php
 
-use dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPage;
 use uzdevid\dashboard\components\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;

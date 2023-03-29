@@ -3,8 +3,8 @@
 namespace uzdevid\dashboard\controllers;
 
 use uzdevid\dashboard\components\BaseController;
-use dashboard\modalpage\ModalPage;
-use dashboard\modalpage\ModalPageOptions;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPageOptions;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\search\UserSearch;
 use uzdevid\dashboard\models\service\ActionService;

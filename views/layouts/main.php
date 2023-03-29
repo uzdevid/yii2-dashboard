@@ -1,13 +1,13 @@
 <?php
 
 use uzdevid\dashboard\assets\DashboardAsset;
-use dashboard\header\Header;
-use dashboard\modalpage\ModalPage;
-use dashboard\modalpage\ModalPageAsset;
-use dashboard\offcanvaspage\OffCanvasAsset;
-use dashboard\offcanvaspage\OffCanvas;
-use dashboard\sidebar\SideBar;
-use dashboard\toaster\ToasterAsset;
+use uzdevid\dashboard\header\Header;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPageAsset;
+use uzdevid\dashboard\offcanvaspage\OffCanvasAsset;
+use uzdevid\dashboard\offcanvaspage\OffCanvas;
+use uzdevid\dashboard\sidebar\SideBar;
+use uzdevid\dashboard\toaster\ToasterAsset;
 use yii\bootstrap5\Breadcrumbs;
 use yii\web\View;
 

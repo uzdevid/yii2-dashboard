@@ -2,7 +2,7 @@
 
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\User;
-use dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPage;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\web\View;
