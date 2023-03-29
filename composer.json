@@ -15,11 +15,11 @@
   ],
   "require": {
     "yiisoft/yii2": "~2.0.0",
-    "dashboard/toaster": "^0.0.0",
-    "dashboard/sidebar": "^0.0.0",
-    "dashboard/modal-page": "^0.0.0",
-    "dashboard/offcanvas-page": "^0.0.0",
-    "uzdevid/dashboard-header": "^0.0.0"
+    "uzdevid/dashboard-toaster": "^1.0.0",
+    "uzdevid/dashboard-sidebar": "^1.0.0",
+    "uzdevid/dashboard-modal-page": "^1.0.0",
+    "uzdevid/dashboard-offcanvas-page": "^1.0.0",
+    "uzdevid/dashboard-header": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
