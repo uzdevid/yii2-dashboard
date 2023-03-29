@@ -19,7 +19,7 @@
     "dashboard/sidebar": "^0.0.0",
     "dashboard/modal-page": "^0.0.0",
     "dashboard/offcanvas-page": "^0.0.0",
-    "uzdevid/dashboard-header": "dev-main"
+    "uzdevid/dashboard-header": "^0.0.0"
   },
   "autoload": {
     "psr-4": {
