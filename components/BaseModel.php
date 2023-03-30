@@ -16,6 +16,17 @@ class BaseModel extends ActiveRecord {
 
     public function afterSave($insert, $changedAttributes): void {
         if ($insert) {
+            $modify = new ModifyLog();
+            $modify->user_id = Yii::$app->user->id;
+            $modify->model = $this->tableName();
+            $modify->model_id = $this->id;
+            $modify->attribute = 'this.created';
+            $modify->value = json_encode($this->attributes, JSON_UNESCAPED_UNICODE);
+            $modify->old_value = null;
+            $modify->modify_time = time();
+            $modify->save();
+
+            parent::afterSave($insert, $changedAttributes);
             return;
         }
 
@@ -42,9 +53,9 @@ class BaseModel extends ActiveRecord {
         $modify->user_id = Yii::$app->user->id;
         $modify->model = $this->tableName();
         $modify->model_id = $this->id;
-        $modify->attribute = 'this';
+        $modify->attribute = 'this.deleted';
         $modify->value = null;
-        $modify->old_value = json_encode($this->attributes);
+        $modify->old_value = json_encode($this->attributes, JSON_UNESCAPED_UNICODE);
         $modify->modify_time = time();
         $modify->save();
 
