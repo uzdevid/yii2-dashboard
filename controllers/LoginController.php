@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use app\models\system\form\LoginForm;
+use uzdevid\dashboard\models\form\LoginForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
