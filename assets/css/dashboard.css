@@ -491,31 +491,36 @@ h1, h2, h3, h4, h5, h6 {
     padding: 3px 6px;
 }
 
-.header-nav .notifications .notification-item {
+.header-nav .notifications .notification-item,
+.header-nav .online-users .online-user-item {
     display: flex;
     align-items: center;
     padding: 15px 10px;
     transition: 0.3s;
 }
 
-.header-nav .notifications .notification-item i {
+.header-nav .notifications .notification-item i,
+.header-nav .online-users .online-user-item i {
     margin: 0 20px 0 10px;
     font-size: 24px;
 }
 
-.header-nav .notifications .notification-item h4 {
+.header-nav .notifications .notification-item h4,
+.header-nav .online-users .online-user-item h4 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.header-nav .notifications .notification-item p {
+.header-nav .notifications .notification-item p,
+.header-nav .online-users .online-user-item p {
     font-size: 13px;
     margin-bottom: 3px;
     color: #919191;
 }
 
-.header-nav .notifications .notification-item:hover {
+.header-nav .notifications .notification-item:hover,
+.header-nav .online-users .online-user-item:hover {
     background-color: #f6f9ff;
 }
 

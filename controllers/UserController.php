@@ -14,6 +14,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\helpers\ArrayHelper;
 
 class UserController extends BaseController {
     /**
@@ -147,5 +148,18 @@ class UserController extends BaseController {
         }
 
         throw new NotFoundHttpException(Yii::t('system.message', 'The requested page does not exist.'));
+    }
+
+    public function actionOnlineUsers(){
+        $online_users = User::find()->where(['>', 'last_activity_time', time() - 60 * 2])->all();
+        $users = User::find()->where(['not in', 'id', ArrayHelper::map($online_users, 'id', 'id')])->all();
+
+        return [
+            'success' => true,
+            'body' => [
+                'badge' => count($online_users),
+                'view' => $this->renderAjax('ajax/online-users', compact('online_users', 'users'))
+            ]
+        ];
     }
 }

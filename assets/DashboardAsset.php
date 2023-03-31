@@ -41,6 +41,7 @@ class DashboardAsset extends AssetBundle {
         'libraries/tinymce/tinymce.min.js',
         'libraries/jquery-ui/js/script.js',
         'js/notifications-badge.js',
+        'js/online-users.js',
         [
             'libraries/choices/js/choices.min.js',
             'position' => View::POS_HEAD
