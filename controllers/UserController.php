@@ -151,8 +151,8 @@ class UserController extends BaseController {
     }
 
     public function actionOnlineUsers(){
-        $online_users = User::find()->where(['>', 'last_activity_time', time() - 60 * 2])->all();
-        $users = User::find()->where(['not in', 'id', ArrayHelper::map($online_users, 'id', 'id')])->all();
+        $online_users = User::find()->where(['>', 'last_activity_time', time() - 60 * 2])->orderBy(['last_activity_time' => SORT_DESC])->all();
+        $users = User::find()->where(['not in', 'id', ArrayHelper::map($online_users, 'id', 'id')])->orderBy(['last_activity_time' => SORT_DESC])->all();
 
         return [
             'success' => true,

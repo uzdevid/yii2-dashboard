@@ -33,7 +33,9 @@ use uzdevid\dashboard\models\User;
             <h4><?php echo $_user->fullname; ?></h4>
             <p>
                 <i class="bi bi-circle-fill text-secondary m-0" style="font-size: 12px;"></i>
-                <span><?php echo date('H:i', $_user->last_activity_time); ?></span>
+                <?php if ($_user->last_activity_time != null): ?>
+                    <span><?php echo date('H:i', $_user->last_activity_time); ?></span>
+                <?php endif; ?>
             </p>
         </div>
         <?php echo ModalPage::link('', Url::to(['/system/user/view', 'id' => $_user->id]), ['class' => 'stretched-link']); ?>
