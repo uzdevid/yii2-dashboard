@@ -19,7 +19,8 @@
     "uzdevid/dashboard-sidebar": "^1.0.0",
     "uzdevid/dashboard-modal-page": "^1.0.0",
     "uzdevid/dashboard-offcanvas-page": "^1.0.0",
-    "uzdevid/dashboard-header": "^1.1.0"
+    "uzdevid/dashboard-header": "^1.1.0",
+    "mistralys/text-diff": "^2.0"
   },
   "autoload": {
     "psr-4": {
