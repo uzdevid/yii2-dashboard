@@ -45,8 +45,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return ModalPage::link($model->user->fullName, Url::to(['/system/user/view', 'id' => $model->user_id]));
                             }
                         ],
-                        'model',
-                        'model_id',
+                        [
+                            'attribute' => 'model',
+                            'format' => 'html',
+                            'headerOptions' => [
+                                'style' => 'min-width: 200px;'
+                            ],
+                        ],
+                        [
+                            'attribute' => 'model_id',
+                            'format' => 'html',
+                            'headerOptions' => [
+                                'style' => 'min-width: 200px;'
+                            ],
+                        ],
                         [
                             'attribute' => 'attribute',
                             'format' => 'html',
