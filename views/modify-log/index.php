@@ -38,6 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'user_id',
                             'format' => 'html',
+                            'headerOptions' => [
+                                'style' => 'min-width: 200px;'
+                            ],
                             'value' => function (ModifyLog $model) {
                                 return ModalPage::link($model->user->fullName, Url::to(['/system/user/view', 'id' => $model->user_id]));
                             }
@@ -47,6 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'attribute',
                             'format' => 'html',
+                            'headerOptions' => [
+                                'style' => 'min-width: 200px;'
+                            ],
                             'value' => function (ModifyLog $model) {
                                 return Yii::t('system.model', $model->attribute);
                             }
@@ -54,6 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'modify_time',
                             'format' => 'datetime',
+                            'headerOptions' => [
+                                'style' => 'min-width: 200px;'
+                            ],
                         ],
                         [
                             'class' => ActionColumn::class,

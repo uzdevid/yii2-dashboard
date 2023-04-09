@@ -18,6 +18,9 @@ use yii\grid\GridView;
             [
                 'attribute' => 'user_id',
                 'format' => 'html',
+                'headerOptions' => [
+                    'style' => 'min-width: 200px;'
+                ],
                 'value' => function (ModifyLog $model) {
                     return ModalPage::link($model->user->fullName, Url::to(['/system/user/view', 'id' => $model->user_id]));
                 }
@@ -25,6 +28,9 @@ use yii\grid\GridView;
             [
                 'attribute' => 'attribute',
                 'format' => 'html',
+                'headerOptions' => [
+                    'style' => 'min-width: 200px;'
+                ],
                 'value' => function (ModifyLog $model) {
                     return Yii::t('system.model', $model->attribute);
                 }
@@ -32,6 +38,9 @@ use yii\grid\GridView;
             [
                 'attribute' => 'modify_time',
                 'format' => 'datetime',
+                'headerOptions' => [
+                    'style' => 'min-width: 200px;'
+                ],
             ],
             [
                 'class' => ActionColumn::class,
