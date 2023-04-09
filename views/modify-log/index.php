@@ -4,12 +4,13 @@ use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\modalpage\ModalPage;
 use uzdevid\dashboard\models\ModifyLog;
 use uzdevid\dashboard\models\service\MenuService;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use yii\grid\ActionColumn;
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var \uzdevid\dashboard\models\search\ModifyLogSearch $searchModel */
 
 $this->title = Yii::t('system.menu', 'Modified models');
 $this->params['breadcrumbs'][] = MenuService::breadcrumb('/system/default/index');
@@ -23,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="table-responsive">
                 <?php echo GridView::widget([
                     'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
                     'pager' => [
                         'class' => 'yii\bootstrap5\LinkPager',
                         'maxButtonCount' => 15,
@@ -58,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'template' => '{diff}',
                             'buttons' => [
                                 'diff' => static function ($url, ModifyLog $model, $key) {
-                                    return ModalPage::link('<i class="bi bi-eye"></i>', $url, [
+                                    return ModalPage::link('<i class="bi bi-plus-slash-minus"></i>', $url, [
                                         'class' => 'btn btn-sm btn-success',
                                         'title' => Yii::t('system.crud', 'View'),
                                     ]);

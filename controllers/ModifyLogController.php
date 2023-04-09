@@ -4,13 +4,13 @@ namespace uzdevid\dashboard\controllers;
 
 use Mistralys\Diff\Diff;
 use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\modalpage\ModalPageOptions;
 use uzdevid\dashboard\models\ModifyLog;
-use yii\data\ActiveDataProvider;
+use uzdevid\dashboard\models\search\ModifyLogSearch;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
-use uzdevid\dashboard\modalpage\ModalPage;
-use uzdevid\dashboard\modalpage\ModalPageOptions;
 
 class ModifyLogController extends BaseController {
     /**
@@ -42,20 +42,15 @@ class ModifyLogController extends BaseController {
      * @return string
      */
     public function actionIndex(): string {
-        $dataProvider = new ActiveDataProvider([
-            'query' => ModifyLog::find(),
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                    'modify_time' => SORT_DESC
-                ]
-            ]
-        ]);
+        $searchModel = new ModifyLogSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', compact('dataProvider'));
+        $dataProvider->sort->defaultOrder = [
+            'id' => SORT_DESC,
+            'modify_time' => SORT_DESC
+        ];
+
+        return $this->render('index', compact('dataProvider', 'searchModel'));
     }
 
     public function actionDiff($id) {
