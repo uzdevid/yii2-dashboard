@@ -39,7 +39,10 @@ class DashboardAsset extends AssetBundle {
         'libraries/quill/quill.min.js',
         'libraries/simple-datatables/simple-datatables.js',
         'libraries/tinymce/tinymce.min.js',
+        'libraries/sortable-list/js/treeSortable.js',
         'libraries/jquery-ui/js/script.js',
+        'js/popper.min.js',
+        'js/tippy-bundle.umd.js',
         'js/notifications-badge.js',
         'js/online-users.js',
         [

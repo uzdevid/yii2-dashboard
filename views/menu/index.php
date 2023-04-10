@@ -148,9 +148,3 @@ $this->params['breadcrumbs'][] = $this->title;
         });
     });
 </script>
-
-<script src="<?php echo Yii::$app->request->baseUrl; ?>/vendor/jquery-ui/js/script.js"></script>
-<script src="<?php echo Yii::$app->request->baseUrl; ?>/js/popper.min.js"></script>
-<script src="<?php echo Yii::$app->request->baseUrl; ?>/js/tippy-bundle.umd.js"></script>
-
-<script src="<?php echo Yii::$app->request->baseUrl; ?>/vendor/sortable-list/js/treeSortable.js"></script>
