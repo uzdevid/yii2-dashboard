@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\chat\widgets\ChatRoom\ChatRoom;
+use uzdevid\dashboard\chat\widgets\Chat\Chat;
 use uzdevid\dashboard\components\BaseController;
 use Yii;
 use yii\base\InvalidConfigException;
@@ -33,13 +33,13 @@ class ChatController extends BaseController {
     }
 
     public function init() {
-        if (!class_exists(ChatRoom::class)) {
+        if (!class_exists(Chat::class)) {
             throw new InvalidConfigException(Yii::t('system.error', 'Extension "{name}" not found', ['name' => 'uzdevid/dashboard-chat']));
         }
         parent::init();
     }
 
     public function actionRoom($id) {
-        return ChatRoom::widget(['id' => $id]);
+        return json_decode(Chat::widget(['id' => $id]), true);
     }
 }
