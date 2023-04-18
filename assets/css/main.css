@@ -9,3 +9,7 @@
 ::-webkit-scrollbar-thumb {
     background: var(--bs-primary);
 }
+
+.no-scroll::-webkit-scrollbar {
+    display: none;
+}
