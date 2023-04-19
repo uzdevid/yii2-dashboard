@@ -20,6 +20,7 @@
     "uzdevid/dashboard-modal-page": "^1.0.0",
     "uzdevid/dashboard-offcanvas-page": "^1.0.0",
     "uzdevid/dashboard-header": "^1.1.0",
+    "uzdevid/dashboard-chat": "^0.0.4",
     "mistralys/text-diff": "^2.0"
   },
   "autoload": {
