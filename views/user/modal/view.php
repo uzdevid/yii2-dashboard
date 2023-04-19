@@ -1,69 +1,46 @@
 <?php
 
-use uzdevid\dashboard\modalpage\ModalPage;
 use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\models\service\ContactService;
 use uzdevid\dashboard\models\service\UserService;
 use uzdevid\dashboard\models\User;
 use yii\bootstrap5\Html;
-use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var User $model */
 ?>
 
-<div class="card">
-    <div class="card-body py-3">
-        <div class="row">
-            <div class="col-6">
-                <?php echo DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                        'id',
-                        [
-                            'attribute' => 'user_id',
-                            'format' => 'html',
-                            'value' => function (User $model) {
-                                return $model->user == null ? null : ModalPage::link($model->user->fullname, Url::to(['/system/user/view', 'id' => $model->user_id]));
-                            }
-                        ],
-                        'email:email',
-                        'surname',
-                        'name',
-                        [
-                            'attribute' => 'role_id',
-                            'value' => function (User $model) {
-                                return $model->role->translatedName;
-                            }
-                        ],
-                        'language',
-                        'last_activity_time',
-                        'last_update_time',
-                        'create_time',
-                    ],
-                ]); ?>
-                <?php if (UserService::canIDeleteUser($model)): ?>
-                    <div class="text-end">
-                        <?php echo Html::a(Yii::t('system.crud', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => Yii::t('system.message', 'Are you sure you want to delete this item?'),
-                                'method' => 'post',
-                            ],
-                        ]); ?>
-                    </div>
-                <?php endif; ?>
+
+<div>
+    <div class="mb-2 d-flex justify-content-start align-items-start">
+        <img width="150px" height="150px" class="rounded-circle" src="<?php echo $model->profileImage; ?>" alt="<?php echo $model->fullname; ?>">
+        <div class="ms-3">
+            <div>
+                <h4><?php echo $model->fullname; ?></h4>
+                <p class="text-muted"><?php echo UserService::lastActivityTime($model->last_activity_time); ?> | <?php echo $model->role->translatedName; ?></p>
             </div>
-            <div class="col-6">
-                <?php foreach ($model->contacts as $contact): ?>
-                    <?php echo DetailView::widget([
-                        'model' => $contact,
-                        'attributes' => [
-                            'type',
-                            'contact',
+            <div class="mt-5">
+                <?php if (class_exists(\uzdevid\dashboard\chat\widgets\Chat\Chat::class)): ?>
+                    <?php echo \uzdevid\dashboard\offcanvaspage\OffCanvas::link(Yii::t('system.content', 'Send message'), Url::to(['/system/chat/room-if-exist', 'companion_id' => $model->id]), ['class' => 'btn btn-primary mt-2']); ?>
+                <?php endif; ?>
+                <?php if (UserService::canIDeleteUser($model)): ?>
+                    <?php echo Html::a(Yii::t('system.crud', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
+                        'class' => 'btn btn-danger mt-2',
+                        'data' => [
+                            'confirm' => Yii::t('system.message', 'Are you sure you want to delete this item?'),
+                            'method' => 'post',
                         ],
                     ]); ?>
-                <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
+
+    <hr>
+
+    <div>
+        <?php foreach ($model->contacts as $contact): ?>
+            <a class="small btn bg-primary-light me-1 mt-2" href="<?php echo ContactService::createLink($contact->type, $contact->contact); ?>"><?php echo $contact->contact; ?></a>
+        <?php endforeach; ?>
     </div>
 </div>

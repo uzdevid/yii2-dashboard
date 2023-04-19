@@ -61,7 +61,7 @@ class UserController extends BaseController {
         $model = $this->findModel($id);
 
         if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_XL);
+            $modal = ModalPage::options(true, ModalPageOptions::SIZE_LG);
             $view = $this->renderAjax('modal/view', compact('model'));
 
             return [

@@ -12,4 +12,12 @@ class ContactService {
             'address' => Yii::t('system.contact', 'Address'),
         ];
     }
+
+    public static function createLink($type, $value): string {
+        return match ($type) {
+            'email' => 'mailto:' . $value,
+            'phone' => 'tel:' . $value,
+            'address' => 'https://www.google.com/maps/search/?api=1&query=' . $value,
+        };
+    }
 }

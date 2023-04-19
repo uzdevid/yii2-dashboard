@@ -46,4 +46,14 @@ class UserService {
         $user->image->saveAs(Yii::getAlias('@webroot') . "/storage/profile/photo/{$filename}");
         return $filename;
     }
+
+    public static function lastActivityTime($time) {
+        if (strtotime(date('Y-m-d', $time)) == strtotime(date('Y-m-d'))) {
+            return Yii::$app->formatter->asTime($time);
+        } elseif (date('Y', $time) == date('Y')) {
+            return Yii::$app->formatter->asDatetime($time);
+        }
+
+        return Yii::$app->formatter->asDatetime($time);
+    }
 }
