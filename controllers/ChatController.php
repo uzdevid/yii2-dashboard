@@ -58,6 +58,6 @@ class ChatController extends BaseController {
             return json_decode(Chat::widget(['companionId' => $companion_id]), true);
         }
 
-        return $this->redirect(['/dashboard/chat/room', 'id' => $chat_id]);
+        return $this->actionRoom($chat_id);
     }
 }
