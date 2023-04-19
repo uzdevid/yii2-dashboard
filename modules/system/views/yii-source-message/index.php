@@ -1,10 +1,10 @@
 <?php
 
-use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
 use uzdevid\dashboard\models\service\MenuService;
 use uzdevid\dashboard\models\YiiSourceMessage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use yii\bootstrap5\Html;
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
@@ -43,8 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ],
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-
                     'id',
                     'category',
                     'message:ntext',

@@ -41,8 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ],
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-
                     [
                         'attribute' => 'id',
                         'value' => function (YiiMessage $model) {

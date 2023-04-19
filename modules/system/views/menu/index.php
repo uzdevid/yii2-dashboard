@@ -35,8 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-
                             'id',
                             [
                                 'attribute' => 'title',
