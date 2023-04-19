@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\components\Url;
-use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\models\User;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;

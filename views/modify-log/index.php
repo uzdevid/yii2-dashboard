@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\components\Url;
-use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\models\ModifyLog;
 use uzdevid\dashboard\models\service\MenuService;
 use yii\grid\ActionColumn;

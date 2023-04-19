@@ -1,13 +1,14 @@
 <?php
 
 use uzdevid\dashboard\assets\DashboardAsset;
-use uzdevid\dashboard\header\Header;
-use uzdevid\dashboard\modalpage\ModalPage;
-use uzdevid\dashboard\modalpage\ModalPageAsset;
-use uzdevid\dashboard\offcanvaspage\OffCanvasAsset;
-use uzdevid\dashboard\offcanvaspage\OffCanvas;
-use uzdevid\dashboard\sidebar\SideBar;
-use uzdevid\dashboard\toaster\ToasterAsset;
+use uzdevid\dashboard\widgets\Footer\Footer;
+use uzdevid\dashboard\widgets\Header\Header;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPageAsset;
+use uzdevid\dashboard\widgets\OffCanvasPage\OffCanvasPage;
+use uzdevid\dashboard\widgets\OffCanvasPage\OffCanvasPageAsset;
+use uzdevid\dashboard\widgets\SideBar\SideBar;
+use uzdevid\dashboard\widgets\Toaster\ToasterAsset;
 use yii\bootstrap5\Breadcrumbs;
 use yii\web\View;
 
@@ -17,7 +18,7 @@ use yii\web\View;
 DashboardAsset::register($this);
 ToasterAsset::register($this);
 ModalPageAsset::register($this);
-OffCanvasAsset::register($this);
+OffCanvasPageAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
@@ -54,16 +55,9 @@ OffCanvasAsset::register($this);
         <?php echo $content; ?>
     </main>
 
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            <?php echo Yii::t('system.content', '&copy; Copyright <strong><span>UzDevid</span></strong>. All Rights Reserved'); ?>
-        </div>
-        <div class="credits">
-            <?php echo Yii::t('system.content', 'Powered by <a href="https://devid.uz" target="_blank">UzDevid</a>'); ?>
-        </div>
-    </footer>
+    <?php echo Footer::widget(); ?>
 
-    <?php echo OffCanvas::widget(); ?>
+    <?php echo OffCanvasPage::widget(); ?>
 
     <?php echo ModalPage::widget(); ?>
 

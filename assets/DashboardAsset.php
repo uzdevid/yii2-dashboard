@@ -44,7 +44,6 @@ class DashboardAsset extends AssetBundle {
         'js/popper.min.js',
         'js/tippy-bundle.umd.js',
         'js/notifications-badge.js',
-        'js/online-users.js',
         [
             'libraries/choices/js/choices.min.js',
             'position' => View::POS_HEAD
@@ -55,6 +54,6 @@ class DashboardAsset extends AssetBundle {
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset',
+        'yii\bootstrap5\BootstrapAsset'
     ];
 }

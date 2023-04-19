@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\offcanvaspage\OffCanvas;
 use uzdevid\dashboard\offcanvaspage\OffCanvasOptions;
 use uzdevid\dashboard\models\Menu;

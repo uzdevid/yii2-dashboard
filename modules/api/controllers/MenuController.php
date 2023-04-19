@@ -5,7 +5,7 @@ namespace uzdevid\dashboard\modules\api\controllers;
 use uzdevid\dashboard\components\BaseRestController;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\service\MenuService;
-use uzdevid\dashboard\toaster\Toaster;
+use uzdevid\dashboard\widgets\Toaster\Toaster;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;

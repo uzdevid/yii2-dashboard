@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\modalpage\ModalPage;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\service\MenuService;
 use uzdevid\dashboard\models\service\RoleService;
