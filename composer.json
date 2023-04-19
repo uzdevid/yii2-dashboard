@@ -15,12 +15,8 @@
   ],
   "require": {
     "yiisoft/yii2": "~2.0.0",
-    "uzdevid/dashboard-toaster": "^1.0.0",
-    "uzdevid/dashboard-sidebar": "^1.0.0",
-    "uzdevid/dashboard-modal-page": "^1.0.0",
-    "uzdevid/dashboard-offcanvas-page": "^1.0.0",
-    "uzdevid/dashboard-header": "^1.1.0",
     "uzdevid/dashboard-chat": "^0.0.4",
+    "uzdevid/yii2-dashboard-onlines": "^0.0.0",
     "mistralys/text-diff": "^2.0"
   },
   "autoload": {
