@@ -15,8 +15,6 @@
   ],
   "require": {
     "yiisoft/yii2": "~2.0.0",
-    "uzdevid/dashboard-chat": "^0.0.4",
-    "uzdevid/yii2-dashboard-onlines": "^0.0.0",
     "mistralys/text-diff": "^2.0"
   },
   "autoload": {
