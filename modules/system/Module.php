@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard;
+namespace uzdevid\dashboard\modules\system;
 
 use Yii;
 use yii\web\Response;
@@ -12,7 +12,8 @@ class Module extends \yii\base\Module {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'uzdevid\dashboard\controllers';
+    public $controllerNamespace = 'uzdevid\dashboard\modules\system\controllers';
+
     /**
      * {@inheritdoc}
      */
@@ -21,7 +22,7 @@ class Module extends \yii\base\Module {
 
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-            
+
             Yii::$app->response->on(Response::EVENT_BEFORE_SEND, function ($event) {
                 $response = $event->sender;
                 if (!$response->isSuccessful) {

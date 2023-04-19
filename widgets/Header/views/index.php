@@ -30,6 +30,7 @@ use uzdevid\dashboard\models\User;
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <?php if (class_exists(\uzdevid\dashboard\onlines\widgets\Onlines\Onlines::class)): ?>
+                    <?php \uzdevid\dashboard\onlines\widgets\Onlines\OnlinesAsset::register($this); ?>
                     <?php echo \uzdevid\dashboard\onlines\widgets\Onlines\Onlines::widget(); ?>
                 <?php endif; ?>
 
@@ -37,49 +38,11 @@ use uzdevid\dashboard\models\User;
                     <?php echo \uzdevid\dashboard\chat\widgets\NavButton\NavButton::widget(); ?>
                 <?php endif; ?>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link nav-icon btn btn-outline-light" data-bs-toggle="dropdown">
-                        <i class="bi bi-bell"></i>
-                        <span id="notifications-badge" class="badge bg-primary badge-number" style="<?php echo count($unread_notifications) == 0 ? 'display:none;' : ''; ?>"><?php echo count($unread_notifications); ?></span>
-                    </a>
-                    <ul id="notifications-mini-list" class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"></ul>
-                </li>
+                <?php if (class_exists(\uzdevid\dashboard\notifications\widgets\Notification::class)): ?>
+                    <?php echo \uzdevid\dashboard\notifications\widgets\Notification::widget(); ?>
+                <?php endif; ?>
 
-                <li class="nav-item dropdown pe-3">
-                    <button class="nav-link nav-profile d-flex align-items-center pe-0 btn btn-outline-light" data-bs-toggle="dropdown">
-                        <img src="<?php echo $user->profileImage; ?>" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $user->fullname; ?></span>
-                    </button>
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                        <li class="dropdown-header">
-                            <h6><?php echo $user->fullname; ?></h6>
-                            <span><?php echo $user->role->translatedName; ?></span>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo Url::toRoute(['/system/profile']); ?>">
-                                <i class="bi bi-person"></i>
-                                <span><?php echo Yii::t('system.content', 'My profile'); ?></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo Url::toRoute(['/system/login/out']); ?>">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span><?php echo Yii::t('system.content', 'Sign Out'); ?></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <?php echo \uzdevid\dashboard\widgets\Profile\Profile::widget(); ?>
             </ul>
         </nav>
     </header>

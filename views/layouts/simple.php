@@ -1,6 +1,6 @@
 <?php
 
-use app\assets\SimpleAsset;
+use uzdevid\dashboard\SimpleDashboardAsset;
 use yii\web\View;
 
 /**
@@ -8,7 +8,7 @@ use yii\web\View;
  * @var string $content
  */
 
-\uzdevid\dashboard\assets\SimpleDashboardAsset::register($this);
+SimpleDashboardAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
@@ -20,8 +20,7 @@ use yii\web\View;
 
         <title><?php echo $this->title; ?></title>
         <meta name="robot" content="none">
-
-        <!-- Favicons -->
+        
         <link href="<?php echo Yii::$app->request->baseUrl; ?>/img/favicon.png" rel="icon">
         <link href="<?php echo Yii::$app->request->baseUrl; ?>/img/apple-touch-icon.png" rel="apple-touch-icon">
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard\assets;
+namespace uzdevid\dashboard;
 
 use yii\web\AssetBundle;
 

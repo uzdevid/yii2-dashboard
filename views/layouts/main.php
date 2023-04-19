@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\assets\DashboardAsset;
+use uzdevid\dashboard\DashboardAsset;
 use uzdevid\dashboard\widgets\Footer\Footer;
 use uzdevid\dashboard\widgets\Header\Header;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;

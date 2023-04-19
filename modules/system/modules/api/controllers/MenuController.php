@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard\modules\api\controllers;
+namespace uzdevid\dashboard\modules\system\modules\api\controllers;
 
 use uzdevid\dashboard\components\BaseRestController;
 use uzdevid\dashboard\models\Menu;
