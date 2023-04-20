@@ -89,7 +89,15 @@ class LoginForm extends Model {
                 $device->save();
             }
 
-            return Yii::$app->user->login($this->_user, $this->rememberMe ? 3600 * 24 * 30 * 12 * 2 : 0);
+            $duration = $this->rememberMe ? 3600 * 24 * 30 * 12 * 2 : 0;
+
+            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'device_id',
+                'value' => $device->device_id,
+                'expire' => time() + $duration,
+            ]));
+
+            return Yii::$app->user->login($this->_user, $duration);
         }
         return false;
     }

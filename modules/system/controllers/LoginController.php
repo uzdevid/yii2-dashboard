@@ -9,7 +9,7 @@ use yii\web\Response;
 
 class LoginController extends Controller {
 
-    public $layout = 'simple';
+    public $layout = '@vendor/uzdevid/yii2-dashboard/views/layouts/simple';
 
     /**
      * @return string

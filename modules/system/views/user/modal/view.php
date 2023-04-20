@@ -21,8 +21,9 @@ use yii\bootstrap5\Html;
             </div>
             <div class="mt-5">
                 <?php if (class_exists(\uzdevid\dashboard\chat\widgets\Chat\Chat::class) && $model->id != Yii::$app->user->id): ?>
-                    <?php echo \uzdevid\dashboard\offcanvaspage\OffCanvas::link(Yii::t('system.content', 'Send message'), Url::to(['/system/chat/room-if-exist', 'companion_id' => $model->id]), ['id' => 'go-to-chat-btn', 'class' => 'btn btn-primary mt-2']); ?>
+                    <?php echo \uzdevid\dashboard\widgets\OffCanvasPage\OffCanvasPage::link(Yii::t('system.content', 'Send message'), Url::to(['/system/chat/room-if-exist', 'companion_id' => $model->id]), ['id' => 'go-to-chat-btn', 'class' => 'btn btn-primary mt-2']); ?>
                 <?php endif; ?>
+
                 <?php if (UserService::canIDeleteUser($model)): ?>
                     <?php echo Html::a(Yii::t('system.crud', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
                         'class' => 'btn btn-danger mt-2',
