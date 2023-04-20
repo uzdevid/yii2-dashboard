@@ -38,8 +38,8 @@ use uzdevid\dashboard\models\User;
                     <?php echo \uzdevid\dashboard\chat\widgets\NavButton\NavButton::widget(); ?>
                 <?php endif; ?>
 
-                <?php if (class_exists(\uzdevid\dashboard\notifications\widgets\Notification::class)): ?>
-                    <?php echo \uzdevid\dashboard\notifications\widgets\Notification::widget(); ?>
+                <?php if (class_exists(\uzdevid\dashboard\notification\widgets\Notification\Notification::class)): ?>
+                    <?php echo \uzdevid\dashboard\notification\widgets\Notification\Notification::widget(); ?>
                 <?php endif; ?>
 
                 <?php echo \uzdevid\dashboard\widgets\Profile\Profile::widget(); ?>

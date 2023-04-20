@@ -1,10 +1,10 @@
 <?php
 
-use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\components\Url;
 use uzdevid\dashboard\models\service\MenuService;
 use uzdevid\dashboard\models\service\RoleService;
 use uzdevid\dashboard\models\User;
+use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -75,8 +75,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ],
                 ]); ?>
-
-
             </div>
         </div>
     </section>
