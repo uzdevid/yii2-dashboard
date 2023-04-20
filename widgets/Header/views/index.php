@@ -39,7 +39,7 @@ use uzdevid\dashboard\models\User;
                 <?php endif; ?>
 
                 <?php if (class_exists(\uzdevid\dashboard\notification\widgets\Notification\Notification::class)): ?>
-                    <?php echo \uzdevid\dashboard\notification\NotificationAsset::register($this); ?>
+                    <?php \uzdevid\dashboard\notification\NotificationAsset::register($this); ?>
                     <?php echo \uzdevid\dashboard\notification\widgets\Notification\Notification::widget(); ?>
                 <?php endif; ?>
 
