@@ -1,6 +1,7 @@
 <?php
 
-namespace uzdevid\dashboard\components;
+namespace uzdevid\dashboard\overrides;
+
 class Url extends \yii\helpers\Url {
     public static function to($url = '', $scheme = false): string {
         if (is_array($url) && isset($_GET['menu'])) {

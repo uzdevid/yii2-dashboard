@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard\components;
+namespace uzdevid\dashboard\bootstraps;
 
 use Yii;
 use yii\base\BootstrapInterface;

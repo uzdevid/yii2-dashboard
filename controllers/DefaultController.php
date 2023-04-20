@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\overrides\BaseController;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;

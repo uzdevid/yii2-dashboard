@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\Device;
 use Yii;
 use yii\db\StaleObjectException;

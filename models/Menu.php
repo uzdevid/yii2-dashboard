@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\models;
 
-use uzdevid\dashboard\components\BaseModel;
+use uzdevid\dashboard\overrides\BaseModel;
 use Throwable;
 use Yii;
 use yii\db\ActiveQuery;

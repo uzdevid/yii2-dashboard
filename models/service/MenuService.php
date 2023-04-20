@@ -3,7 +3,7 @@
 namespace uzdevid\dashboard\models\service;
 
 use uzdevid\dashboard\models\Menu;
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use yii\web\NotFoundHttpException;
 
 class MenuService {

@@ -4,7 +4,7 @@ namespace uzdevid\dashboard\controllers;
 
 use uzdevid\dashboard\chat\models\service\ChatService;
 use uzdevid\dashboard\chat\widgets\Chat\Chat;
-use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\overrides\BaseController;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\filters\AccessControl;

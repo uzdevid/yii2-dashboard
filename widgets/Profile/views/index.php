@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\User;
 
 /**

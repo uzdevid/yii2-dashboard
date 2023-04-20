@@ -2,8 +2,8 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\components\BaseController;
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\search\MenuSearch;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;

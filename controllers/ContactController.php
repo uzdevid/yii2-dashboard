@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\Contact;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;

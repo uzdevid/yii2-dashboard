@@ -3,7 +3,7 @@
 namespace uzdevid\dashboard\modules\system\controllers;
 
 use Mistralys\Diff\Diff;
-use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\overrides\BaseController;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\models\ModifyLog;

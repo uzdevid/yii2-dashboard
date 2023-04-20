@@ -2,11 +2,11 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\overrides\BaseController;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\search\MenuSearch;
 use Yii;

@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard\components;
+namespace uzdevid\dashboard\overrides;
 
 use uzdevid\dashboard\models\Action;
 use Yii;

@@ -2,10 +2,10 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\components\BaseController;
+use uzdevid\dashboard\overrides\BaseController;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
-use uzdevid\dashboard\components\Url;
+use uzdevid\dashboard\overrides\Url;
 use uzdevid\dashboard\models\search\UserSearch;
 use uzdevid\dashboard\models\service\ActionService;
 use uzdevid\dashboard\models\User;
