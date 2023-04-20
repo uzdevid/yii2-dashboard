@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\YiiMessage;
 use yii\helpers\Html;

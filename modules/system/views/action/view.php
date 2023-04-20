@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 

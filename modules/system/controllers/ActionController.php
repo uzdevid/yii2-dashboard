@@ -2,11 +2,11 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Action;
 use uzdevid\dashboard\models\search\ActionSearch;
 use Yii;
@@ -19,7 +19,7 @@ use yii\web\Response;
 /**
  * ActionController implements the CRUD actions for Action model.
  */
-class ActionController extends BaseController {
+class ActionController extends Controller {
     /**
      * @inheritDoc
      */

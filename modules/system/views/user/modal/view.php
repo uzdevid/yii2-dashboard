@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\service\ContactService;
 use uzdevid\dashboard\models\service\UserService;
 use uzdevid\dashboard\models\User;

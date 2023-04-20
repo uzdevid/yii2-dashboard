@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\models;
 
-use uzdevid\dashboard\overrides\BaseModel;
+use uzdevid\dashboard\base\db\ActiveRecord;
 use Throwable;
 use Yii;
 use yii\db\ActiveQuery;
@@ -26,7 +26,7 @@ use yii\db\StaleObjectException;
  * @property-read string $translatedTitle
  * @property-read int $level
  */
-class Menu extends BaseModel {
+class Menu extends ActiveRecord {
     /**
      * {@inheritdoc}
      */

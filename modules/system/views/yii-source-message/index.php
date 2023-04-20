@@ -1,6 +1,6 @@
 <?php
 
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
 use uzdevid\dashboard\models\service\MenuService;
 use uzdevid\dashboard\models\YiiSourceMessage;

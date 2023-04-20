@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\modules\api\controllers;
 
-use uzdevid\dashboard\overrides\BaseRestController;
+use uzdevid\dashboard\base\rest\Controller;
 use uzdevid\dashboard\models\ActionUser;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
 use Yii;
@@ -10,7 +10,7 @@ use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
-class UserController extends BaseRestController {
+class UserController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
         $behaviors['verb'] = [

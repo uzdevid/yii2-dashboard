@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Action;
 use yii\bootstrap5\Html;
 use yii\grid\ActionColumn;

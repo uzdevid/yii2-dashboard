@@ -2,8 +2,8 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\overrides\BaseController;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\web\Controller;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\search\MenuSearch;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
@@ -18,7 +18,7 @@ use yii\web\Response;
 /**
  * MenuController implements the CRUD actions for Menu model.
  */
-class MenuController extends BaseController {
+class MenuController extends Controller {
     /**
      * @inheritDoc
      */

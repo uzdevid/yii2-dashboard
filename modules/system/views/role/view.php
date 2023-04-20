@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Role;
 use uzdevid\dashboard\models\service\MenuService;
 use yii\widgets\DetailView;

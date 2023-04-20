@@ -2,11 +2,11 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
-use uzdevid\dashboard\overrides\Url;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
 use uzdevid\dashboard\models\YiiSourceMessage;
 use Yii;
@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class YiiSourceMessageController extends BaseController {
+class YiiSourceMessageController extends Controller {
     /**
      * @inheritDoc
      */

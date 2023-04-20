@@ -2,12 +2,12 @@
 
 namespace uzdevid\dashboard\controllers;
 
-use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\base\web\Controller;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
-class DefaultController extends BaseController {
+class DefaultController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
         $behaviors['access'] = [

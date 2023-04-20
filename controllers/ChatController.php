@@ -4,7 +4,7 @@ namespace uzdevid\dashboard\controllers;
 
 use uzdevid\dashboard\chat\models\service\ChatService;
 use uzdevid\dashboard\chat\widgets\Chat\Chat;
-use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\base\web\Controller;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\filters\AccessControl;
@@ -13,7 +13,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class ChatController extends BaseController {
+class ChatController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
         $behaviors['access'] = [

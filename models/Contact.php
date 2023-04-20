@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\models;
 
-use uzdevid\dashboard\overrides\BaseModel;
+use uzdevid\dashboard\base\db\ActiveRecord;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -18,7 +18,7 @@ use yii\db\ActiveQuery;
  *
  * @property string $translatedType
  */
-class Contact extends BaseModel {
+class Contact extends ActiveRecord {
     /**
      * {@inheritdoc}
      */

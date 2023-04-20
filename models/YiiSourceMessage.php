@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\models;
 
-use uzdevid\dashboard\overrides\BaseModel;
+use uzdevid\dashboard\base\db\ActiveRecord;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -15,7 +15,7 @@ use yii\db\ActiveQuery;
  *
  * @property YiiMessage[] $yiiMessages
  */
-class YiiSourceMessage extends BaseModel {
+class YiiSourceMessage extends ActiveRecord {
     /**
      * {@inheritdoc}
      */

@@ -3,7 +3,7 @@
 namespace uzdevid\dashboard\modules\system\controllers;
 
 use Mistralys\Diff\Diff;
-use uzdevid\dashboard\overrides\BaseController;
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\models\ModifyLog;
@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
-class ModifyLogController extends BaseController {
+class ModifyLogController extends Controller {
     /**
      * @inheritDoc
      */
