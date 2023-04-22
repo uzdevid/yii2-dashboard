@@ -43,7 +43,6 @@ class DashboardAsset extends AssetBundle {
         'libraries/jquery-ui/js/script.js',
         'js/popper.min.js',
         'js/tippy-bundle.umd.js',
-        'js/notifications-badge.js',
         [
             'libraries/choices/js/choices.min.js',
             'position' => View::POS_HEAD
