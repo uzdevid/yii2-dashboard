@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\web\Controller;
 use Yii;
 use yii\filters\AccessControl;
@@ -18,6 +19,10 @@ class DefaultController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [

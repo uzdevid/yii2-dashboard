@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\Device;
 use Yii;
@@ -30,6 +31,10 @@ class DeviceController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [

@@ -2,9 +2,11 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\models\service\UserService;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\web\UploadedFile;
@@ -19,6 +21,17 @@ class ProfileController extends Controller {
                     'allow' => true,
                     'roles' => ['@'],
                 ],
+            ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
+        ];
+
+        $behaviors['verbs'] = [
+            'class' => VerbFilter::class,
+            'actions' => [
+                'index' => ['GET'],
             ],
         ];
 

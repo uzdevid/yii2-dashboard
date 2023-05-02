@@ -2,8 +2,8 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\base\helpers\Url;
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\search\MenuSearch;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
@@ -14,7 +14,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 /**
  * MenuController implements the CRUD actions for Menu model.
  */
@@ -24,6 +24,7 @@ class MenuController extends Controller {
      */
     public function behaviors(): array {
         $behaviors = parent::behaviors();
+        
         $behaviors['access'] = [
             'class' => AccessControl::class,
             'rules' => [
@@ -32,6 +33,10 @@ class MenuController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [

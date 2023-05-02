@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
@@ -30,6 +31,10 @@ class RoleController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [

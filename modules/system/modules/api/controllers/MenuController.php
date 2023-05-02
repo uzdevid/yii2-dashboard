@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\modules\api\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\rest\Controller;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\service\MenuService;
@@ -19,6 +20,10 @@ class MenuController extends Controller {
                 'index' => ['GET'],
                 'sort-completed' => ['POST'],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         return $behaviors;

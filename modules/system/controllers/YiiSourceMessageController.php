@@ -2,13 +2,14 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\filters\DashboardAccessControl;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\base\web\Controller;
+use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
+use uzdevid\dashboard\models\YiiSourceMessage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
-use uzdevid\dashboard\base\helpers\Url;
-use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
-use uzdevid\dashboard\models\YiiSourceMessage;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -29,6 +30,10 @@ class YiiSourceMessageController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
+        ];
+
+        $behaviors['dashboard_access'] = [
+            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [
