@@ -3,6 +3,7 @@
 namespace uzdevid\dashboard\modules\system;
 
 use uzdevid\dashboard\access\control\controllers\ActionController;
+use uzdevid\dashboard\modify\log\controllers\ModifyLogController;
 use Yii;
 use yii\web\Response;
 
@@ -30,7 +31,7 @@ class Module extends \yii\base\Module {
             });
         }
 
-        $this->controllerMap['actions'] = ActionController::class;
         $this->controllerMap['action'] = ActionController::class;
+        $this->controllerMap['modify-log'] = ModifyLogController::class;
     }
 }
