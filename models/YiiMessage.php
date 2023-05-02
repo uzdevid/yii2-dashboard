@@ -20,7 +20,7 @@ class YiiMessage extends ActiveRecord {
      * {@inheritdoc}
      */
     public static function tableName() {
-        return 'yii_message';
+        return '{{%message}}';
     }
 
     /**

@@ -22,7 +22,7 @@ use yii\db\BaseActiveRecord;
  * @property string $type
  * @property string|null $notification_token
  * @property int $last_activity_time
- * @property int $auth_time
+ * @property int $authorization_time
  *
  * @property User $user
  *
@@ -43,9 +43,9 @@ class Device extends ActiveRecord {
     public function rules(): array {
         return [
             [['user_id', 'name'], 'required'],
-            [['user_id', 'auth_time', 'last_activity_time'], 'integer'],
-            [['auth_time', 'last_activity_time'], 'safe'],
-            [['name', 'device_id', 'notification_token'], 'string', 'max' => 255],
+            [['user_id', 'authorization_time', 'last_activity_time'], 'integer'],
+            [['authorization_time', 'last_activity_time'], 'safe'],
+            [['name', 'device_id'], 'string', 'max' => 255],
             [['access_token'], 'string', 'max' => 32],
             [['type'], 'string', 'max' => 45],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -65,7 +65,7 @@ class Device extends ActiveRecord {
             'type' => Yii::t('system.model', 'Type'),
             'notification_token' => Yii::t('system.model', 'Notification Token'),
             'last_activity_time' => Yii::t('system.model', 'Last Activity Time'),
-            'auth_time' => Yii::t('system.model', 'Auth Time'),
+            'authorization_time' => Yii::t('system.model', 'Authorization Time'),
         ];
     }
 
@@ -74,8 +74,7 @@ class Device extends ActiveRecord {
         $behaviors['timestamp'] = [
             'class' => TimestampBehavior::class,
             'attributes' => [
-                BaseActiveRecord::EVENT_BEFORE_INSERT => ['last_activity_time', 'auth_time'],
-                'value' => time(),
+                BaseActiveRecord::EVENT_BEFORE_INSERT => ['last_activity_time', 'authorization_time'],
             ]
         ];
 
@@ -99,7 +98,6 @@ class Device extends ActiveRecord {
             $this->device_id = Yii::$app->security->generateRandomString();
             $this->access_token = Yii::$app->security->generateRandomString();
             $this->type = 'web';
-            $this->auth_time = date('Y-m-d H:i:s');
         }
         return parent::beforeSave($insert);
     }

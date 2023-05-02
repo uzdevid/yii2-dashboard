@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system;
 
+use uzdevid\dashboard\access\control\controllers\ActionController;
 use Yii;
 use yii\web\Response;
 
@@ -9,11 +10,6 @@ use yii\web\Response;
  * system module definition class
  */
 class Module extends \yii\base\Module {
-    /**
-     * {@inheritdoc}
-     */
-    public $controllerNamespace = 'uzdevid\dashboard\modules\system\controllers';
-
     /**
      * {@inheritdoc}
      */
@@ -33,5 +29,7 @@ class Module extends \yii\base\Module {
                 }
             });
         }
+
+        $this->controllerMap['actions'] = ActionController::class;
     }
 }

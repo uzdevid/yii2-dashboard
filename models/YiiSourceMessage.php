@@ -20,7 +20,7 @@ class YiiSourceMessage extends ActiveRecord {
      * {@inheritdoc}
      */
     public static function tableName(): string {
-        return 'yii_source_message';
+        return '{{%source_message}}';
     }
 
     /**

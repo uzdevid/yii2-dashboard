@@ -12,11 +12,6 @@ class Module extends \yii\base\Module {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'uzdevid\dashboard\modules\system\modules\api\controllers';
-
-    /**
-     * {@inheritdoc}
-     */
     public $components = [
         'request' => [
             'class' => 'yii\web\Request',
