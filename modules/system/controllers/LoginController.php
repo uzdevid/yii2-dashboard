@@ -2,9 +2,9 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\models\form\LoginForm;
 use Yii;
-use yii\web\Controller;
 use yii\web\Response;
 
 class LoginController extends Controller {

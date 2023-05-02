@@ -2,14 +2,13 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\base\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\helpers\Url;
+use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\models\Device;
 use Yii;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -31,10 +30,6 @@ class DeviceController extends Controller {
                     'roles' => ['@'],
                 ],
             ],
-        ];
-
-        $behaviors['dashboard_access'] = [
-            'class' => DashboardAccessControl::class,
         ];
 
         $behaviors['verbs'] = [

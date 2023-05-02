@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\controllers;
 
-use uzdevid\dashboard\base\filters\DashboardAccessControl;
+use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
@@ -33,9 +33,11 @@ class UserController extends Controller {
             ],
         ];
 
-        $behaviors['dashboard_access'] = [
-            'class' => DashboardAccessControl::class,
-        ];
+        if (class_exists(DashboardAccessControl::class)) {
+            $behaviors['dashboard_access'] = [
+                'class' => DashboardAccessControl::class,
+            ];
+        }
 
         $behaviors['verbs'] = [
             'class' => VerbFilter::class,

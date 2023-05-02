@@ -137,7 +137,7 @@ class User extends ActiveRecord implements IdentityInterface {
      * @return ActiveQuery
      */
     public function getDevices(): ActiveQuery {
-        return $this->hasMany(Device::class, ['user_id' => 'id'])->orderBy(['auth_time' => SORT_DESC]);
+        return $this->hasMany(Device::class, ['user_id' => 'id'])->orderBy(['authorization_time' => SORT_DESC]);
     }
 
     /**

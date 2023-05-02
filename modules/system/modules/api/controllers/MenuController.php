@@ -2,7 +2,7 @@
 
 namespace uzdevid\dashboard\modules\system\modules\api\controllers;
 
-use uzdevid\dashboard\base\filters\DashboardAccessControl;
+use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\rest\Controller;
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\service\MenuService;
@@ -22,9 +22,11 @@ class MenuController extends Controller {
             ],
         ];
 
-        $behaviors['dashboard_access'] = [
-            'class' => DashboardAccessControl::class,
-        ];
+        if (class_exists(DashboardAccessControl::class)) {
+            $behaviors['dashboard_access'] = [
+                'class' => DashboardAccessControl::class,
+            ];
+        }
 
         return $behaviors;
     }
