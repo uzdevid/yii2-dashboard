@@ -85,7 +85,7 @@ class LoginForm extends Model {
                 $device->name = $_SERVER['HTTP_USER_AGENT'];
                 $device->save();
             } else {
-                $device->auth_time = time();
+                $device->authorization_time = time();
                 $device->save();
             }
 

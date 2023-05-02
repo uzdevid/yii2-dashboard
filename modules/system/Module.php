@@ -32,6 +32,9 @@ class Module extends \yii\base\Module {
         }
 
         $this->controllerMap['action'] = ActionController::class;
-        $this->controllerMap['modify-log'] = ModifyLogController::class;
+
+        if (class_exists(ModifyLogController::class)) {
+            $this->controllerMap['modify-log'] = ModifyLogController::class;
+        }
     }
 }
