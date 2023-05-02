@@ -31,5 +31,6 @@ class Module extends \yii\base\Module {
         }
 
         $this->controllerMap['actions'] = ActionController::class;
+        $this->controllerMap['action'] = ActionController::class;
     }
 }
