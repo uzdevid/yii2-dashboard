@@ -115,6 +115,6 @@ class Device extends ActiveRecord {
      * @throws InvalidConfigException
      */
     public function getFormattedAuthTime(): ?string {
-        return Yii::$app->formatter->asDatetime($this->auth_time);
+        return Yii::$app->formatter->asDatetime($this->authorization_time);
     }
 }
