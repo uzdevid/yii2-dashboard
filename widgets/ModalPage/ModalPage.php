@@ -27,6 +27,10 @@ class ModalPage extends Widget {
             $options['class'] .= ' in-modal';
         }
 
+        if (empty($options['data-loader'])) {
+            $options['data-loader'] = 'enable';
+        }
+
         return Html::a($text, Url::to($url), $options);
     }
 

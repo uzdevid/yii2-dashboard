@@ -1,6 +1,10 @@
 var modalPage = new bootstrap.Modal(document.getElementById('modal-page'));
 
-function openModalPage(url) {
+function openModalPage(url, btn) {
+    if ($(btn).data('loader') == 'enable') {
+        $(btn).prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ');
+    }
+
     $.get(url).done(function (data) {
         if (!data.success) {
             if (!data.toaster) {
@@ -11,10 +15,7 @@ function openModalPage(url) {
                 toaster.options = data.toaster.options;
             } else {
                 toaster.options = {
-                    closeButton: true,
-                    newestOnTop: true,
-                    progressBar: true,
-                    onclick: null
+                    closeButton: true, newestOnTop: true, progressBar: true, onclick: null
                 };
             }
 
@@ -34,8 +35,9 @@ function openModalPage(url) {
         }
 
 
-        if (data.modal.centered)
+        if (data.modal.centered) {
             $('#modal-dialog').addClass('modal-dialog-centered');
+        }
 
         if (data.body.title) {
             $('.modal-header').removeClass('d-none');
@@ -45,19 +47,27 @@ function openModalPage(url) {
         }
         $('#modal-page-body').html(data.body.view);
 
-        if (data.body.script)
+        if (data.body.script) {
             eval(data.body.script);
-    })
-        .fail(function (data) {
-            console.log(data);
-            toaster.error(data.responseJSON.body.message, data.responseJSON.body.name);
-        });
+        }
+
+        if ($(btn).data('loader') == 'enable') {
+            $(btn).find('span.spinner-border').remove();
+        }
+    }).fail(function (data) {
+        toaster.error(data.responseJSON.body.message, data.responseJSON.body.name);
+
+        if ($(btn).data('loader') == 'enable') {
+            $(btn).find('span.spinner-border').remove();
+        }
+    });
 }
 
 $(document).ready(function () {
     $('body').on('click', 'a.in-modal', function (e) {
         e.preventDefault();
-        openModalPage($(this).attr('href'));
+
+        openModalPage($(this).attr('href'), $(this));
     });
 
     $('#modal-page').on('hidden.bs.modal', function () {
