@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\DashboardAsset;
-use uzdevid\dashboard\korrektor\KorrektorAssets;
+use uzdevid\dashboard\korrektor\TextManagerAssets;
 use uzdevid\dashboard\widgets\Footer\Footer;
 use uzdevid\dashboard\widgets\Header\Header;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
@@ -21,8 +21,8 @@ ToasterAsset::register($this);
 ModalPageAsset::register($this);
 OffCanvasPageAsset::register($this);
 
-if (class_exists(KorrektorAssets::class)) {
-    KorrektorAssets::register($this);
+if (class_exists(TextManagerAssets::class)) {
+    TextManagerAssets::register($this);
 }
 ?>
 <?php $this->beginPage(); ?>
