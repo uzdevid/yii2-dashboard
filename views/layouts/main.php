@@ -1,7 +1,7 @@
 <?php
 
 use uzdevid\dashboard\DashboardAsset;
-use uzdevid\dashboard\korrektor\TextManagerAssets;
+use uzdevid\dashboard\text\TextManagerAssets;
 use uzdevid\dashboard\widgets\Footer\Footer;
 use uzdevid\dashboard\widgets\Header\Header;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
