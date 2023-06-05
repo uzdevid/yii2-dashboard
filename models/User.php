@@ -2,7 +2,10 @@
 
 namespace uzdevid\dashboard\models;
 
+use uzdevid\dashboard\access\control\models\ActionUser;
 use uzdevid\dashboard\models\service\UserService;
+use uzdevid\dashboard\modify\log\models\ModifyLog;
+use uzdevid\dashboard\notification\models\Notification;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
@@ -258,10 +261,22 @@ class User extends ActiveRecord implements IdentityInterface {
 
     public function beforeDelete(): bool {
         $this->unlinkAll('devices', true);
-        $this->unlinkAll('notifications', true);
-        $this->unlinkAll('contacts', true);
-        $this->unlinkAll('actionUsers', true);
-        $this->unlinkAll('modifyLogs', true);
+
+        if (class_exists(Notification::class)) {
+            $this->unlinkAll('notifications', true);
+        }
+
+        if (class_exists(Contact::class)) {
+            $this->unlinkAll('contacts', true);
+        }
+
+        if (class_exists(ActionUser::class)) {
+            $this->unlinkAll('actionUsers', true);
+        }
+
+        if (class_exists(ModifyLog::class)) {
+            $this->unlinkAll('modifyLogs', true);
+        }
 
         return parent::beforeDelete();
     }
