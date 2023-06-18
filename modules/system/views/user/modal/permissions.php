@@ -1,7 +1,7 @@
 <?php
 
+use uzdevid\dashboard\access\control\models\service\ActionService;
 use uzdevid\dashboard\models\Action;
-use uzdevid\dashboard\models\service\ActionService;
 use uzdevid\dashboard\models\User;
 use yii\bootstrap5\Html;
 

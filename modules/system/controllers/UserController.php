@@ -8,7 +8,7 @@ use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\models\search\UserSearch;
-use uzdevid\dashboard\models\service\ActionService;
+use uzdevid\dashboard\access\control\models\service\ActionService;
 use uzdevid\dashboard\models\User;
 use Yii;
 use yii\filters\AccessControl;

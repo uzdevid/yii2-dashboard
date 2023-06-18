@@ -1,31 +1,26 @@
-Dashboard panel
-===============
-Dashboard panel
+# Boshqaruv Paneli
 
-Installation
+Veb sayt va mobil ilovalarni boshqarish uchun Yii2 frameworkiga asoslangan boshqaruv paneli.
+
+O'rnatish
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+Ushbu kengaytmani o'rnatishning afzal usuli - [composer](http://getcomposer.org/download/) orqali.
 
-Either run
-
-```
-php composer.phar require --prefer-dist dashboard/yii2-dashboard "*"
-```
-
-or add
+O'rnatish uchun quyidagi buyruqni ishga tushiring:
 
 ```
-"dashboard/yii2-dashboard": "*"
+php composer require --prefer-dist uzdevid/yii2-dashboard
 ```
 
-to the require section of your `composer.json` file.
+Agar siz composer global o'rnatgan bo'lsangiz, quyidagi buyruqni ishga tushiring:
 
+```
+composer require --prefer-dist uzdevid/yii2-dashboard
+```
 
-Usage
------
+Yoki quyidagi qatorni `composer.json` faylga qo'shing:
 
-Once the extension is installed, simply use it in your code by  :
-
-```php
-<?= \uzdevid\dashboard\AutoloadExample::widget(); ?>```
+```
+"uzdevid/yii2-dashboard": "^1.0"
+```
