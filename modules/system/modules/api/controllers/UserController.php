@@ -3,8 +3,8 @@
 namespace uzdevid\dashboard\modules\system\modules\api\controllers;
 
 use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
+use uzdevid\dashboard\access\control\models\ActionUser;
 use uzdevid\dashboard\base\rest\Controller;
-use uzdevid\dashboard\models\ActionUser;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
 use Yii;
 use yii\filters\VerbFilter;
