@@ -2,6 +2,7 @@
 
 namespace uzdevid\dashboard\models;
 
+use Yii;
 use yii\web\IdentityInterface;
 
 class Identity extends User implements IdentityInterface {

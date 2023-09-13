@@ -21,11 +21,15 @@ class LoginController extends Controller {
     /**
      * @return string
      */
-    public function actionIndex(): string {
+    public function actionIndex(): Response|string {
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $this->goBack();
+            if (is_null(Yii::$app->request->referrer)) {
+                return $this->redirect(Yii::$app->homeUrl);
+            }
+            
+            return $this->redirect(str_ends_with(Yii::$app->request->referrer, Yii::$app->request->url) ? Yii::$app->homeUrl : Yii::$app->request->referrer);
         }
 
         $this->view->title = Yii::t('system.content', 'Login');
