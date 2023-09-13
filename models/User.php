@@ -6,7 +6,7 @@ use uzdevid\dashboard\models\service\UserService;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 
-class User extends \uzdevid\dashboard\models\base\User {
+class User extends base\User {
     public function getFullname(): string {
         return $this->surname . ' ' . $this->name;
     }

@@ -7,7 +7,7 @@ use Yii;
 /**
  * @property string $translatedTitle
  */
-class Menu extends \uzdevid\dashboard\models\base\Menu {
+class Menu extends base\Menu {
     public function getTranslatedTitle(): string {
         return Yii::t('system.menu', $this->title);
     }
