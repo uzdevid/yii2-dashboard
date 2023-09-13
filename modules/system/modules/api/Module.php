@@ -2,43 +2,34 @@
 
 namespace uzdevid\dashboard\modules\system\modules\api;
 
+use uzdevid\dashboard\events\ModuleEvent;
 use Yii;
-use yii\web\Response;
 
-/**
- * api module definition class
- */
 class Module extends \yii\base\Module {
     /**
      * {@inheritdoc}
      */
     public $components = [
         'request' => [
-            'class' => 'yii\web\Request',
+            'class' => yii\web\Request::class,
             'enableCookieValidation' => false,
             'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-                'application/xml' => 'yii\web\XmlParser'
+                'application/json' => yii\web\JsonParser::class,
             ]
-        ],
-        'response' => [
-            'class' => 'yii\web\Response',
-            'formatters' => [
-                'json' => [
-                    'class' => 'yii\web\JsonResponseFormatter',
-                    'prettyPrint' => YII_DEBUG,
-                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
-                ],
-            ],
-        ],
+        ]
     ];
+
+    public const EVENT_BEFORE_INIT = 'beforeInit';
+    public const EVENT_AFTER_INIT = 'afterInit';
 
     /**
      * {@inheritdoc}
      */
     public function init() {
+        Yii::$app->trigger(self::EVENT_BEFORE_INIT, new ModuleEvent($this));
+
         parent::init();
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->trigger(self::EVENT_AFTER_INIT, new ModuleEvent($this));
     }
 }

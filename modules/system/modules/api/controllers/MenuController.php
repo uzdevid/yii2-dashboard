@@ -14,19 +14,14 @@ use yii\web\NotFoundHttpException;
 class MenuController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['verb'] = [
+
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
                 'index' => ['GET'],
                 'sort-completed' => ['POST'],
             ],
         ];
-
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
 
         return $behaviors;
     }

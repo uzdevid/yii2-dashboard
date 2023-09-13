@@ -3,44 +3,27 @@
 namespace uzdevid\dashboard\modules\system;
 
 use uzdevid\dashboard\access\control\controllers\ActionController;
+use uzdevid\dashboard\events\ModuleEvent;
 use uzdevid\dashboard\modify\log\controllers\ModifyLogController;
 use Yii;
+use yii\base\ActionEvent;
 use yii\web\Response;
 
 /**
  * system module definition class
  */
 class Module extends \yii\base\Module {
+    public const EVENT_BEFORE_INIT = 'beforeInit';
+    public const EVENT_AFTER_INIT = 'afterInit';
+    
     /**
      * {@inheritdoc}
      */
     public function init() {
+        Yii::$app->trigger(self::EVENT_BEFORE_INIT, new ModuleEvent($this));
+
         parent::init();
 
-        if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-
-            Yii::$app->response->on(Response::EVENT_BEFORE_SEND, function ($event) {
-                $response = $event->sender;
-                if (!$response->isSuccessful) {
-                    $response->data = [
-                        'success' => $response->isSuccessful,
-                        'body' => $response->data,
-                    ];
-                }
-            });
-        }
-
-        if (class_exists(ActionController::class)) {
-            $this->controllerMap['action'] = ActionController::class;
-        }
-
-        if (class_exists(ModifyLogController::class)) {
-            $this->controllerMap['modify-log'] = ModifyLogController::class;
-        }
-        
-        if (class_exists(\uzdevid\dashboard\access\control\controllers\RoleController::class)) {
-            $this->controllerMap['role'] = \uzdevid\dashboard\access\control\controllers\RoleController::class;
-        }
+        Yii::$app->trigger(self::EVENT_AFTER_INIT, new ModuleEvent($this));
     }
 }

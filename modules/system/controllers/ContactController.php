@@ -9,7 +9,6 @@ use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
 use Yii;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -23,19 +22,14 @@ class ContactController extends Controller {
      */
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['access'] = [
-            'class' => AccessControl::class,
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ];
 
-        $behaviors['verbs'] = [
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
+                'index' => ['GET'],
+                'create' => ['GET', 'POST'],
+                'update' => ['GET', 'POST'],
+                'view' => ['POST'],
                 'delete' => ['POST'],
             ],
         ];
@@ -57,26 +51,24 @@ class ContactController extends Controller {
             $model->loadDefaultValues();
         }
 
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_LG);
-            $view = $this->renderAjax('modal/create', ['model' => $model]);
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'toaster' => Toaster::success(),
-                'body' => [
-                    'title' => ModalPage::title(Yii::t('system.content', 'Create Contact'), '<i class="bi bi-envelope"></i>'),
-                    'view' => $view
-                ]
-            ];
+        if (!$this->request->isAjax) {
+            return $this->render('create', compact('model'));
         }
 
-        return $this->render('create', compact('model'));
+        return [
+            'success' => true,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
+            'toaster' => Toaster::success(),
+            'body' => [
+                'title' => ModalPage::title(Yii::t('system.content', 'Create Contact'), '<i class="bi bi-envelope"></i>'),
+                'view' => $this->renderAjax('modal/create', compact('model'))
+            ]
+        ];
     }
 
     /**
      * @param int $id ID
+     *
      * @return Response|array|string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -87,26 +79,23 @@ class ContactController extends Controller {
             return $this->redirect(Url::to(['/system/profile/index']));
         }
 
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_LG);
-            $view = $this->renderAjax('modal/update', ['model' => $model]);
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'toaster' => Toaster::success(),
-                'body' => [
-                    'title' => ModalPage::title(Yii::t('system.content', 'Update Contact: {contact}', ['contact' => $model->type]), '<i class="bi bi-envelope"></i>'),
-                    'view' => $view
-                ]
-            ];
+        if (!$this->request->isAjax) {
+            return $this->render('update', compact('model'));
         }
 
-        return $this->render('update', compact('model'));
+        return [
+            'success' => true,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
+            'body' => [
+                'title' => ModalPage::title(Yii::t('system.content', 'Update Contact: {contact}', ['contact' => $model->type]), '<i class="bi bi-envelope"></i>'),
+                'view' => $this->renderAjax('modal/update', compact('model'))
+            ]
+        ];
     }
 
     /**
      * @param int $id ID
+     *
      * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -118,6 +107,7 @@ class ContactController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Contact the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

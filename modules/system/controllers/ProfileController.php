@@ -13,20 +13,15 @@ use yii\web\UploadedFile;
 class ProfileController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['access'] = [
-            'class' => AccessControl::class,
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ];
 
-        $behaviors['verbs'] = [
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
                 'index' => ['GET'],
+                'create' => ['GET', 'POST'],
+                'update' => ['GET', 'POST'],
+                'view' => ['POST'],
+                'delete' => ['POST'],
             ],
         ];
 

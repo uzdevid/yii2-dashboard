@@ -3,19 +3,18 @@
 namespace uzdevid\dashboard\modules\system\controllers;
 
 use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
+use uzdevid\dashboard\access\control\models\service\ActionService;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\base\web\Controller;
+use uzdevid\dashboard\models\search\UserSearch;
+use uzdevid\dashboard\models\User;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
-use uzdevid\dashboard\base\helpers\Url;
-use uzdevid\dashboard\models\search\UserSearch;
-use uzdevid\dashboard\access\control\models\service\ActionService;
-use uzdevid\dashboard\models\User;
 use Yii;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\helpers\ArrayHelper;
 
 class UserController extends Controller {
     /**
@@ -23,25 +22,14 @@ class UserController extends Controller {
      */
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['access'] = [
-            'class' => AccessControl::class,
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ];
 
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
-
-        $behaviors['verbs'] = [
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
+                'index' => ['GET'],
+                'create' => ['GET', 'POST'],
+                'update' => ['GET', 'POST'],
+                'view' => ['POST'],
                 'delete' => ['POST'],
             ],
         ];
@@ -61,27 +49,25 @@ class UserController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView(int $id): array|string {
         $model = $this->findModel($id);
 
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_LG);
-            $view = $this->renderAjax('modal/view', compact('model'));
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'body' => [
-                    'title' => ModalPage::title($model->fullName, '<i class="bi bi-person"></i>'),
-                    'view' => $view
-                ]
-            ];
+        if (!$this->request->isAjax) {
+            return $this->render('view', compact('model'));
         }
 
-        return $this->render('view', compact('model'));
+        return [
+            'success' => true,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
+            'body' => [
+                'title' => ModalPage::title($model->fullName, '<i class="bi bi-person"></i>'),
+                'view' => $this->renderAjax('modal/view', compact('model'))
+            ]
+        ];
     }
 
     public function actionCreate(): Response|array|string {
@@ -95,25 +81,23 @@ class UserController extends Controller {
             $model->loadDefaultValues();
         }
 
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_XL);
-            $view = $this->renderAjax('modal/create', ['model' => $model]);
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'body' => [
-                    'title' => ModalPage::title(Yii::t('system.content', 'Create User'), '<i class="bi bi-person"></i>'),
-                    'view' => $view
-                ]
-            ];
+        if (!$this->request->isAjax) {
+            return $this->render('create', compact('model'));
         }
 
-        return $this->render('create', compact('model'));
+        return [
+            'success' => true,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_XL),
+            'body' => [
+                'title' => ModalPage::title(Yii::t('system.content', 'Create User'), '<i class="bi bi-person"></i>'),
+                'view' => $this->renderAjax('modal/create', compact('model'))
+            ]
+        ];
     }
 
     /**
      * @param int $id
+     *
      * @return array|string
      * @throws NotFoundHttpException
      */
@@ -146,6 +130,7 @@ class UserController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -157,7 +142,7 @@ class UserController extends Controller {
         throw new NotFoundHttpException(Yii::t('system.message', 'The requested page does not exist.'));
     }
 
-    public function actionOnlineUsers(){
+    public function actionOnlineUsers() {
         $online_users = User::find()->where(['>', 'last_activity_time', time() - 60 * 2])->orderBy(['last_activity_time' => SORT_DESC])->all();
         $users = User::find()->where(['not in', 'id', ArrayHelper::map($online_users, 'id', 'id')])->orderBy(['last_activity_time' => SORT_DESC])->all();
 

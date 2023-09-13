@@ -27,6 +27,7 @@ class LoginController extends Controller {
             'password' => $this->renderPartial('fields/password.php'),
             'rememberMe' => $this->renderPartial('fields/rememberMe.php'),
         ];
+        
         return $this->render('index', ['model' => $model]);
     }
 

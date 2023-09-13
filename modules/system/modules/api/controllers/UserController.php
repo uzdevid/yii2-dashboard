@@ -14,18 +14,13 @@ use yii\web\NotFoundHttpException;
 class UserController extends Controller {
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['verb'] = [
+
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
                 'permission' => ['POST'],
             ],
         ];
-
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
 
         return $behaviors;
     }
@@ -56,6 +51,7 @@ class UserController extends Controller {
                 ]
             ];
         }
+        
         $actionUser = new ActionUser();
         $actionUser->action_id = $raw['action_id'];
         $actionUser->user_id = $raw['user_id'];

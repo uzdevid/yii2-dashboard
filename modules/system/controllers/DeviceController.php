@@ -7,7 +7,6 @@ use uzdevid\dashboard\base\web\Controller;
 use uzdevid\dashboard\models\Device;
 use Yii;
 use yii\db\StaleObjectException;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -21,18 +20,8 @@ class DeviceController extends Controller {
      */
     public function behaviors(): array {
         $behaviors = parent::behaviors();
-        $behaviors['access'] = [
-            'class' => AccessControl::class,
-            'rules' => [
-                [
-                    'allow' => true,
-                    'actions' => $this->actions(),
-                    'roles' => ['@'],
-                ],
-            ],
-        ];
 
-        $behaviors['verbs'] = [
+        $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
                 'delete' => ['POST'],
@@ -44,6 +33,7 @@ class DeviceController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      * @throws \Throwable
@@ -57,6 +47,7 @@ class DeviceController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Device the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
