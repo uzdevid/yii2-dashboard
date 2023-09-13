@@ -29,7 +29,7 @@ class m230502_071844_menu extends Migration {
                 ['id' => 3, 'parent_id' => 2, 'icon' => 'bi bi-circle', 'title' => 'Menu', 'link' => '/system/menu/index', 'order' => 1],
                 ['id' => 4, 'parent_id' => 2, 'icon' => 'bi bi-circle', 'title' => 'Localization', 'link' => '/system/yii-source-message/index', 'order' => 2],
                 ['id' => 5, 'parent_id' => 4, 'icon' => 'bi bi-circle', 'title' => 'Yii Source Messages', 'link' => '/system/yii-source-message/index', 'order' => 1],
-                ['id' => 6, 'parent_id' => 4, 'icon' => 'bi bi-circle', 'title' => 'Yii Messages', 'link' => '/system/yii-source-message/index', 'order' => 2],
+                ['id' => 6, 'parent_id' => 4, 'icon' => 'bi bi-circle', 'title' => 'Yii Messages', 'link' => '/system/yii-message/index', 'order' => 2],
                 ['id' => 7, 'parent_id' => 1, 'icon' => 'bi bi-circle', 'title' => 'Access', 'link' => '/system/action/index', 'order' => 2],
                 ['id' => 8, 'parent_id' => 7, 'icon' => 'bi bi-circle', 'title' => 'Roles', 'link' => '/system/role/index', 'order' => 1],
                 ['id' => 9, 'parent_id' => 7, 'icon' => 'bi bi-circle', 'title' => 'Users', 'link' => '/system/user/index', 'order' => 2],

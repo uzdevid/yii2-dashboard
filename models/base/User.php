@@ -95,16 +95,6 @@ class User extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Role]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRole()
-    {
-        return $this->hasOne(Role::class, ['id' => 'role_id']);
-    }
-
-    /**
      * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery

@@ -26,10 +26,6 @@ use yii\widgets\DetailView;
             'attributes' => [
                 'id',
                 [
-                    'attribute' => 'role_id',
-                    'value' => $model->role?->translatedName,
-                ],
-                [
                     'attribute' => 'parent_id',
                     'value' => $model->parent?->translatedTitle,
                 ],

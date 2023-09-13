@@ -17,7 +17,6 @@ use uzdevid\dashboard\models\User;
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
             <h6><?php echo $user->fullname; ?></h6>
-            <span><?php echo $user->role->translatedName; ?></span>
         </li>
 
         <li>

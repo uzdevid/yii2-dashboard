@@ -35,17 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
-                            'id',
+                            [
+                                'attribute' => 'id',
+                                'headerOptions' => [
+                                    'style' => 'width: 120px;'
+                                ],
+                            ],
                             [
                                 'attribute' => 'title',
                                 'value' => function (Menu $model) {
                                     return $model->translatedTitle;
-                                }
-                            ],
-                            [
-                                'attribute' => 'role_id',
-                                'value' => function (Menu $model) {
-                                    return @$model->role->translatedName;
                                 }
                             ],
                             [

@@ -3,13 +3,15 @@
 namespace uzdevid\dashboard\modules\system\controllers;
 
 use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
+use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\base\web\Controller;
+use uzdevid\dashboard\models\Message;
+use uzdevid\dashboard\models\search\MessageSearch;
+use uzdevid\dashboard\models\search\YiiMessageSearch as YiiMessageSearch;
+use uzdevid\dashboard\models\YiiMessage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPageOptions;
 use uzdevid\dashboard\widgets\Toaster\Toaster;
-use uzdevid\dashboard\base\helpers\Url;
-use uzdevid\dashboard\models\search\YiiMessageSearch as YiiMessageSearch;
-use uzdevid\dashboard\models\YiiMessage;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -32,11 +34,9 @@ class YiiMessageController extends Controller {
             ],
         ];
 
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
+        $behaviors['AccessControl'] = [
+            'class' => \uzdevid\abac\AccessControl::class
+        ];
 
         $behaviors['verbs'] = [
             'class' => VerbFilter::class,
@@ -52,7 +52,7 @@ class YiiMessageController extends Controller {
      * @return string
      */
     public function actionIndex(): string {
-        $searchModel = new YiiMessageSearch();
+        $searchModel = new MessageSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', compact('searchModel', 'dataProvider'));
@@ -60,6 +60,7 @@ class YiiMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return array|string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -85,10 +86,11 @@ class YiiMessageController extends Controller {
 
     /**
      * @param null $source_message_id
+     *
      * @return Response|array|string
      */
     public function actionCreate($source_message_id = null): Response|array|string {
-        $model = new YiiMessage();
+        $model = new Message();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -125,6 +127,7 @@ class YiiMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response|array|string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -154,6 +157,7 @@ class YiiMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -165,11 +169,12 @@ class YiiMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return YiiMessage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel(int $id): YiiMessage {
-        if (($model = YiiMessage::findOne(['id' => $id])) !== null) {
+        if (($model = Message::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

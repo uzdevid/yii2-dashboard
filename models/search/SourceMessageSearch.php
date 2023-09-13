@@ -2,21 +2,22 @@
 
 namespace uzdevid\dashboard\models\search;
 
-use uzdevid\dashboard\models\YiiMessage as YiiMessageModel;
+use uzdevid\dashboard\models\SourceMessage;
+use uzdevid\dashboard\models\YiiSourceMessage;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * YiiMessageSearch represents the model behind the search form of `uzdevid\dashboard\models\YiiMessageSearch`.
+ * YiiSourceMessageSearch represents the model behind the search form of `uzdevid\dashboard\models\YiiSourceMessage`.
  */
-class YiiMessageSearch extends YiiMessageModel {
+class SourceMessageSearch extends SourceMessage {
     /**
      * {@inheritdoc}
      */
-    public function rules() {
+    public function rules(): array {
         return [
             [['id'], 'integer'],
-            [['language', 'translation'], 'safe'],
+            [['category', 'message'], 'safe'],
         ];
     }
 
@@ -36,7 +37,7 @@ class YiiMessageSearch extends YiiMessageModel {
      * @return ActiveDataProvider
      */
     public function search($params) {
-        $query = YiiMessageModel::find();
+        $query = \uzdevid\dashboard\models\base\SourceMessage::find();
 
         // add conditions that should always apply here
 
@@ -57,8 +58,8 @@ class YiiMessageSearch extends YiiMessageModel {
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'language', $this->language])
-            ->andFilterWhere(['like', 'translation', $this->translation]);
+        $query->andFilterWhere(['like', 'category', $this->category])
+            ->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }

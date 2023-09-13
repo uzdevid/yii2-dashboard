@@ -36,11 +36,9 @@ class MenuController extends Controller {
             ],
         ];
 
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
+        $behaviors['AccessControl'] = [
+            'class' => \uzdevid\abac\AccessControl::class
+        ];
 
         $behaviors['verbs'] = [
             'class' => VerbFilter::class,

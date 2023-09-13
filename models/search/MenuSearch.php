@@ -15,7 +15,7 @@ class MenuSearch extends Menu {
      */
     public function rules(): array {
         return [
-            [['id', 'role_id', 'parent_id', 'order'], 'integer'],
+            [['id', 'parent_id', 'order'], 'integer'],
             [['icon', 'title', 'link'], 'safe'],
         ];
     }
@@ -55,7 +55,6 @@ class MenuSearch extends Menu {
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'role_id' => $this->role_id,
             'parent_id' => $this->parent_id,
             'order' => $this->order,
         ]);

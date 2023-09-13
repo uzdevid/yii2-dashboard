@@ -38,5 +38,9 @@ class Module extends \yii\base\Module {
         if (class_exists(ModifyLogController::class)) {
             $this->controllerMap['modify-log'] = ModifyLogController::class;
         }
+        
+        if (class_exists(\uzdevid\dashboard\access\control\controllers\RoleController::class)) {
+            $this->controllerMap['role'] = \uzdevid\dashboard\access\control\controllers\RoleController::class;
+        }
     }
 }

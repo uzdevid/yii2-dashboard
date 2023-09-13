@@ -2,7 +2,6 @@
 
 use uzdevid\dashboard\models\Menu;
 use uzdevid\dashboard\models\service\MenuService;
-use uzdevid\dashboard\models\service\RoleService;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
@@ -17,13 +16,11 @@ use yii\helpers\Html;
     <div class="col-6">
         <?php echo $form->field($model, 'parent_id', ['options' => ['class' => 'mb-3']])->dropDownList(MenuService::getMenus(), ['prompt' => Yii::t('system.content', 'Choose parent menu')]); ?>
 
-        <?php echo $form->field($model, 'role_id', ['options' => ['class' => 'mb-3']])->dropDownList(RoleService::list(), ['prompt' => Yii::t('system.content', 'Choose role')]); ?>
-
         <?php echo $form->field($model, 'icon', ['options' => ['class' => 'mb-3']])->textInput(['maxlength' => true]); ?>
+
+        <?php echo $form->field($model, 'title', ['options' => ['class' => 'mb-3']])->textInput(['maxlength' => true]); ?>
     </div>
     <div class="col-6">
-        <?php echo $form->field($model, 'title', ['options' => ['class' => 'mb-3']])->textInput(['maxlength' => true]); ?>
-
         <?php echo $form->field($model, 'link', ['options' => ['class' => 'mb-3']])->textInput(['maxlength' => true]); ?>
 
         <?php echo $form->field($model, 'order', ['options' => ['class' => 'mb-3']])->textInput(); ?>
@@ -38,5 +35,4 @@ use yii\helpers\Html;
 
 <script>
     new Choices(document.getElementById('menu-parent_id'));
-    new Choices(document.getElementById('menu-role_id'));
 </script>

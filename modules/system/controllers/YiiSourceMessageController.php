@@ -5,6 +5,8 @@ namespace uzdevid\dashboard\modules\system\controllers;
 use uzdevid\dashboard\access\control\filters\DashboardAccessControl;
 use uzdevid\dashboard\base\helpers\Url;
 use uzdevid\dashboard\base\web\Controller;
+use uzdevid\dashboard\models\base\SourceMessage;
+use uzdevid\dashboard\models\search\SourceMessageSearch;
 use uzdevid\dashboard\models\search\YiiSourceMessageSearch;
 use uzdevid\dashboard\models\YiiSourceMessage;
 use uzdevid\dashboard\widgets\ModalPage\ModalPage;
@@ -32,11 +34,9 @@ class YiiSourceMessageController extends Controller {
             ],
         ];
 
-        if (class_exists(DashboardAccessControl::class)) {
-            $behaviors['dashboard_access'] = [
-                'class' => DashboardAccessControl::class,
-            ];
-        }
+        $behaviors['AccessControl'] = [
+            'class' => \uzdevid\abac\AccessControl::class
+        ];
 
         $behaviors['verbs'] = [
             'class' => VerbFilter::class,
@@ -52,7 +52,7 @@ class YiiSourceMessageController extends Controller {
      * @return string
      */
     public function actionIndex(): string {
-        $searchModel = new YiiSourceMessageSearch();
+        $searchModel = new SourceMessageSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', compact('searchModel', 'dataProvider'));
@@ -60,6 +60,7 @@ class YiiSourceMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return array|string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -87,7 +88,7 @@ class YiiSourceMessageController extends Controller {
      * @return Response|array|string
      */
     public function actionCreate(): Response|array|string {
-        $model = new YiiSourceMessage();
+        $model = new SourceMessage();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -117,6 +118,7 @@ class YiiSourceMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response|array|string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -146,6 +148,7 @@ class YiiSourceMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -157,11 +160,12 @@ class YiiSourceMessageController extends Controller {
 
     /**
      * @param int $id ID
+     *
      * @return YiiSourceMessage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel(int $id): YiiSourceMessage {
-        if (($model = YiiSourceMessage::findOne(['id' => $id])) !== null) {
+    protected function findModel(int $id): SourceMessage {
+        if (($model = SourceMessage::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

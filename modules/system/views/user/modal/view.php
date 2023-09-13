@@ -17,7 +17,6 @@ use yii\bootstrap5\Html;
         <div class="ms-3">
             <div>
                 <h4><?php echo $model->fullname; ?></h4>
-                <p class="text-muted"><?php echo UserService::lastActivityTime($model->last_activity_time); ?> | <?php echo $model->role->translatedName; ?></p>
             </div>
             <div class="mt-5">
                 <?php if (class_exists(\uzdevid\dashboard\chat\widgets\Chat\Chat::class) && $model->id != Yii::$app->user->id): ?>

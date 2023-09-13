@@ -31,12 +31,6 @@ $this->params['breadcrumbs'][] = $model->fullName;
                     'email:email',
                     'surname',
                     'name',
-                    [
-                        'attribute' => 'role_id',
-                        'value' => function (User $model) {
-                            return $model->role->translatedName;
-                        }
-                    ],
                     'language',
                     'last_activity_time',
                     'last_update_time',

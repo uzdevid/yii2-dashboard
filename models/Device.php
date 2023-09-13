@@ -1,9 +1,5 @@
 <?php
 
-namespace uzdevid\dashboard\models\base;
+namespace uzdevid\dashboard\models;
 
-use Yii;
-
-class Device extends base\Device {
-
-}
+class Device extends base\Device { }

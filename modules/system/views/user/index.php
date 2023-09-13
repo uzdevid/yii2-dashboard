@@ -44,27 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'surname',
                         'name',
                         [
-                            'attribute' => 'role_id',
-                            'filter' => RoleService::list(),
-                            'filterInputOptions' => ['id' => 'filter-role_id', 'class' => 'form-select'],
-                            'value' => function (User $model) {
-                                return @$model->role->translatedName;
-                            }
-                        ],
-                        [
                             'class' => ActionColumn::class,
-                            'template' => '{permissions} {view}',
+                            'template' => '{view}',
                             'buttons' => [
                                 'view' => function ($url, User $model, $key) {
                                     return ModalPage::link('<i class="bi bi-eye"></i>', $url, [
                                         'class' => 'btn btn-sm btn-success',
                                         'title' => Yii::t('system.crud', 'View'),
-                                    ]);
-                                },
-                                'permissions' => function ($url, User $model, $key) {
-                                    return ModalPage::link('<i class="bi bi-key"></i>', $url, [
-                                        'class' => 'btn btn-sm btn-dark',
-                                        'title' => Yii::t('system.content', 'Permissions'),
                                     ]);
                                 },
                             ],
