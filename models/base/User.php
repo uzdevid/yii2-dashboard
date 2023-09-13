@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\dashboard\models\base
+namespace uzdevid\dashboard\models\base;
 
 use Yii;
 
