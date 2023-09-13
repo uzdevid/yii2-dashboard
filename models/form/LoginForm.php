@@ -3,7 +3,7 @@
 namespace uzdevid\dashboard\models\form;
 
 use uzdevid\dashboard\models\Device;
-use uzdevid\dashboard\models\User;
+use uzdevid\dashboard\models\Identity;
 use Yii;
 use yii\base\Model;
 use yii\web\Cookie;
@@ -11,14 +11,14 @@ use yii\web\Cookie;
 /**
  * LoginForm is the model behind the login form.
  *
- * @property-read User|null $user
+ * @property-read Identity|null $user
  *
  */
 class LoginForm extends Model {
     public string|null $email = null;
     public string|null $password = null;
     public bool $rememberMe = true;
-    private User|null $_user = null;
+    private Identity|null $_user = null;
 
     public function rules(): array {
         return [
@@ -47,9 +47,9 @@ class LoginForm extends Model {
         }
     }
 
-    public function getUser(): ?User {
+    public function getUser(): ?Identity {
         if ($this->_user === null) {
-            $this->_user = User::findOne(['email' => strtolower($this->email)]);
+            $this->_user = Identity::findOne(['email' => strtolower($this->email)]);
         }
         return $this->_user;
     }
@@ -78,7 +78,7 @@ class LoginForm extends Model {
 
             return Yii::$app->user->login($this->_user, $duration);
         }
-        
+
         return false;
     }
 }
