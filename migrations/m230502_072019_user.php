@@ -22,8 +22,7 @@ class m230502_072019_user extends Migration {
             'surname' => $this->string(255)->notNull(),
             'name' => $this->string(255)->notNull(),
             'image' => $this->string(255)->null(),
-            'role_id' => $this->integer(11)->notNull(),
-            'language' => $this->integer(11)->notNull(),
+            'language' => $this->string(5)->notNull(),
             'password' => $this->string(255)->notNull(),
             'last_activity_time' => $this->bigInteger(16)->null(),
             'last_update_time' => $this->bigInteger(16)->null(),
@@ -31,7 +30,6 @@ class m230502_072019_user extends Migration {
         ]);
 
         $this->addForeignKey('fk_user_user_id', 'user', 'user_id', 'user', 'id', 'NO ACTION', 'NO ACTION');
-        $this->addForeignKey('fk_user_role_id', 'user', 'role_id', 'role', 'id', 'NO ACTION', 'NO ACTION');
 
         $email = Console::prompt('Enter admin email: ', [
             'required' => true,
@@ -83,7 +81,6 @@ class m230502_072019_user extends Migration {
             'surname' => $surname,
             'name' => $name,
             'image' => null,
-            'role_id' => 1,
             'language' => 'ru',
             'password' => Yii::$app->security->generatePasswordHash($password),
             'last_activity_time' => null,
