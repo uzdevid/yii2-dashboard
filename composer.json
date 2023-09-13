@@ -22,5 +22,11 @@
     "psr-4": {
       "uzdevid\\dashboard\\": ""
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
