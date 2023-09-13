@@ -9,7 +9,15 @@ use yii\web\Response;
 
 class LoginController extends Controller {
 
-    public $layout = '@vendor/uzdevid/yii2-dashboard/views/layouts/simple';
+    public string $layout = '@vendor/uzdevid/yii2-dashboard/views/layouts/simple';
+
+    public function behaviors() {
+        $behaviors = parent::behaviors();
+
+        unset($behaviors['access'], $behaviors['AccessControl']);
+
+        return $behaviors;
+    }
 
     /**
      * @return string
@@ -22,12 +30,13 @@ class LoginController extends Controller {
         }
 
         $this->view->title = Yii::t('system.content', 'Login');
+        
         $this->view->params['layouts']['fields'] = [
             'email' => $this->renderPartial('fields/email.php'),
             'password' => $this->renderPartial('fields/password.php'),
             'rememberMe' => $this->renderPartial('fields/rememberMe.php'),
         ];
-        
+
         return $this->render('index', ['model' => $model]);
     }
 
