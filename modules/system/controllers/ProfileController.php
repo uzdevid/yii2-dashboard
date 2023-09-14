@@ -17,11 +17,7 @@ class ProfileController extends Controller {
         $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
-                'index' => ['GET'],
-                'create' => ['GET', 'POST'],
-                'update' => ['GET', 'POST'],
-                'view' => ['GET'],
-                'delete' => ['POST'],
+                'index' => ['GET', 'POST']
             ],
         ];
 

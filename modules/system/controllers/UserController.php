@@ -95,33 +95,6 @@ class UserController extends Controller {
         ];
     }
 
-    /**
-     * @param int $id
-     *
-     * @return array|string
-     * @throws NotFoundHttpException
-     */
-    public function actionPermissions(int $id): array|string {
-        $model = $this->findModel($id);
-        $actions = ActionService::getActions();
-
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_FULLSCREEN);
-            $view = $this->renderAjax('modal/permissions', compact('model', 'actions'));
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'body' => [
-                    'title' => ModalPage::title($model->fullName, '<i class="bi bi-person"></i>'),
-                    'view' => $view
-                ]
-            ];
-        }
-
-        return $this->render('permissions', compact('model', 'actions'));
-    }
-
     public function actionDelete(int $id): Response {
         $model = $this->findModel($id);
         $model->delete();
