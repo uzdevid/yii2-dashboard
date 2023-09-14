@@ -30,7 +30,7 @@ class YiiMessageController extends Controller {
                 'index' => ['GET'],
                 'create' => ['GET', 'POST'],
                 'update' => ['GET', 'POST'],
-                'view' => ['POST'],
+                'view' => ['GET'],
                 'delete' => ['POST'],
             ],
         ];
