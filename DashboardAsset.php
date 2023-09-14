@@ -12,7 +12,7 @@ use yii\web\View;
  * @since 2.0
  */
 class DashboardAsset extends AssetBundle {
-    public $sourcePath = '@vendor/uzdevid/yii2-dashboard/assets';
+    public $sourcePath = '@npm/dashboard-assets';
     public $css = [
         'libraries/bootstrap/css/bootstrap.min.css',
         'libraries/bootstrap-icons/bootstrap-icons.css',
