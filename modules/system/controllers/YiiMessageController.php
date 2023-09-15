@@ -51,32 +51,32 @@ class YiiMessageController extends Controller {
     /**
      * @param int $id ID
      *
-     * @return array|string
+     * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView(int $id): array|string {
+    public function actionView(int $id): Response|string {
         $model = $this->findModel($id);
 
         if (!$this->request->isAjax) {
             return $this->render('view', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Yii Source Message'), '<i class="bi bi-translate"></i>'),
                 'view' => $this->renderAjax('modal/view', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
      * @param null $source_message_id
      *
-     * @return Response|array|string
+     * @return Response|string
      */
-    public function actionCreate($source_message_id = null): Response|array|string {
+    public function actionCreate($source_message_id = null): Response|string {
         $model = new Message();
 
         if ($this->request->isPost) {
@@ -98,7 +98,7 @@ class YiiMessageController extends Controller {
             return $this->render('create', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'toaster' => Toaster::success(),
@@ -106,16 +106,16 @@ class YiiMessageController extends Controller {
                 'title' => ModalPage::title($title, '<i class="bi bi-translate"></i>'),
                 'view' => $this->renderAjax('modal/create', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
      * @param int $id ID
      *
-     * @return Response|array|string
+     * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate(int $id): Response|array|string {
+    public function actionUpdate(int $id): Response|string {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -126,14 +126,14 @@ class YiiMessageController extends Controller {
             return $this->render('update', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Update Yii Source Message'), '<i class="bi bi-translate"></i>'),
                 'view' => $this->renderAjax('modal/update', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**

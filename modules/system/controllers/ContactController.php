@@ -26,10 +26,8 @@ class ContactController extends Controller {
         $behaviors['VerbFilter'] = [
             'class' => VerbFilter::class,
             'actions' => [
-                'index' => ['GET'],
                 'create' => ['GET', 'POST'],
                 'update' => ['GET', 'POST'],
-                'view' => ['GET'],
                 'delete' => ['POST'],
             ],
         ];
@@ -38,9 +36,9 @@ class ContactController extends Controller {
     }
 
     /**
-     * @return Response|array|string
+     * @return Response|string
      */
-    public function actionCreate(): Response|array|string {
+    public function actionCreate(): Response|string {
         $model = new Contact();
 
         if ($this->request->isPost) {
@@ -55,7 +53,7 @@ class ContactController extends Controller {
             return $this->render('create', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'toaster' => Toaster::success(),
@@ -63,16 +61,16 @@ class ContactController extends Controller {
                 'title' => ModalPage::title(Yii::t('system.content', 'Create Contact'), '<i class="bi bi-envelope"></i>'),
                 'view' => $this->renderAjax('modal/create', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
      * @param int $id ID
      *
-     * @return Response|array|string
+     * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate(int $id): Response|array|string {
+    public function actionUpdate(int $id): Response|string {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -83,14 +81,14 @@ class ContactController extends Controller {
             return $this->render('update', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Update Contact: {contact}', ['contact' => $model->type]), '<i class="bi bi-envelope"></i>'),
                 'view' => $this->renderAjax('modal/update', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**

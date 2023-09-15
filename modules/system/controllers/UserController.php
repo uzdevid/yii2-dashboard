@@ -53,24 +53,24 @@ class UserController extends Controller {
      * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView(int $id): array|string {
+    public function actionView(int $id): Response|string {
         $model = $this->findModel($id);
 
         if (!$this->request->isAjax) {
             return $this->render('view', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title($model->fullName, '<i class="bi bi-person"></i>'),
                 'view' => $this->renderAjax('modal/view', compact('model'))
             ]
-        ];
+        ]);
     }
 
-    public function actionCreate(): Response|array|string {
+    public function actionCreate(): Response|string {
         $model = new User();
 
         if ($this->request->isPost) {
@@ -85,14 +85,14 @@ class UserController extends Controller {
             return $this->render('create', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_XL),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Create User'), '<i class="bi bi-person"></i>'),
                 'view' => $this->renderAjax('modal/create', compact('model'))
             ]
-        ];
+        ]);
     }
 
     public function actionDelete(int $id): Response {
@@ -119,12 +119,12 @@ class UserController extends Controller {
         $online_users = User::find()->where(['>', 'last_activity_time', time() - 60 * 2])->orderBy(['last_activity_time' => SORT_DESC])->all();
         $users = User::find()->where(['not in', 'id', ArrayHelper::map($online_users, 'id', 'id')])->orderBy(['last_activity_time' => SORT_DESC])->all();
 
-        return [
+        return $this->asJson([
             'success' => true,
             'body' => [
                 'badge' => count($online_users),
                 'view' => $this->renderAjax('ajax/online-users', compact('online_users', 'users'))
             ]
-        ];
+        ]);
     }
 }

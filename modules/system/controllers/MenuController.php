@@ -52,28 +52,28 @@ class MenuController extends Controller {
     /**
      * @param int $id ID
      *
-     * @return array|string
+     * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView(int $id): array|string {
+    public function actionView(int $id): Response|string {
         if (!$this->request->isAjax) {
             return $this->render('view', ['model' => $this->findModel($id)]);
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Menu data'), '<i class="bi bi-menu-up"></i>'),
                 'view' => $this->renderAjax('modal/view', ['model' => $this->findModel($id)])
             ]
-        ];
+        ]);
     }
 
     /**
-     * @return Response|array|string
+     * @return Response|string
      */
-    public function actionCreate(): Response|array|string {
+    public function actionCreate(): Response|string {
         $model = new Menu();
 
         if ($this->request->isPost) {
@@ -88,23 +88,23 @@ class MenuController extends Controller {
             return $this->render('create', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Create Menu'), '<i class="bi bi-menu-up"></i>'),
                 'view' => $this->renderAjax('modal/create', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
      * @param int $id ID
      *
-     * @return Response|array|string
+     * @return Response|string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate(int $id): Response|array|string {
+    public function actionUpdate(int $id): Response|string {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -115,14 +115,14 @@ class MenuController extends Controller {
             return $this->render('update', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Update Menu data'), '<i class="bi bi-menu-up"></i>'),
                 'view' => $this->renderAjax('modal/update', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**

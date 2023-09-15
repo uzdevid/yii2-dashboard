@@ -57,21 +57,19 @@ class YiiSourceMessageController extends Controller {
     public function actionView(int $id): array|string {
         $model = $this->findModel($id);
 
-        if ($this->request->isAjax) {
-            $modal = ModalPage::options(true, ModalPageOptions::SIZE_XL);
-            $view = $this->renderAjax('modal/view', compact('model'));
-
-            return [
-                'success' => true,
-                'modal' => $modal,
-                'body' => [
-                    'title' => ModalPage::title(Yii::t('system.content', 'Yii Source Message: {message}', ['message' => $model->message]), '<i class="bi bi-translate"></i>'),
-                    'view' => $view
-                ]
-            ];
+        if (!$this->request->isAjax) {
+            return $this->render('view', compact('model'));
         }
 
-        return $this->render('view', compact('model'));
+
+        return $this->asJson([
+            'success' => true,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_XL),
+            'body' => [
+                'title' => ModalPage::title(Yii::t('system.content', 'Yii Source Message: {message}', ['message' => $model->message]), '<i class="bi bi-translate"></i>'),
+                'view' => $this->renderAjax('modal/view', compact('model'))
+            ]
+        ]);
     }
 
     /**
@@ -92,7 +90,7 @@ class YiiSourceMessageController extends Controller {
             return $this->render('create', compact('model'));
         }
 
-        return [
+        return $this->asJson([
             'success' => true,
             'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'toaster' => Toaster::success(),
@@ -100,7 +98,7 @@ class YiiSourceMessageController extends Controller {
                 'title' => ModalPage::title(Yii::t('system.content', 'Create Yii Source Message'), '<i class="bi bi-translate"></i>'),
                 'view' => $this->renderAjax('modal/create', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
@@ -120,17 +118,14 @@ class YiiSourceMessageController extends Controller {
             return $this->render('update', compact('model'));
         }
 
-        $modal = ModalPage::options(true, ModalPageOptions::SIZE_LG);
-        $view = $this->renderAjax('modal/update', compact('model'));
-
-        return [
+        return $this->asJson([
             'success' => true,
-            'modal' => $modal,
+            'modal' => ModalPage::options(true, ModalPageOptions::SIZE_LG),
             'body' => [
                 'title' => ModalPage::title(Yii::t('system.content', 'Update Yii Source Message'), '<i class="bi bi-translate"></i>'),
-                'view' => $view
+                'view' => $this->renderAjax('modal/update', compact('model'))
             ]
-        ];
+        ]);
     }
 
     /**
