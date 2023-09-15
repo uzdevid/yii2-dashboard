@@ -9,7 +9,7 @@ use yii\web\View;
 
 /**
  * @var View $this
- * @var User $user
+ * @var \uzdevid\dashboard\models\Identity $user
  */
 ?>
 
@@ -20,7 +20,6 @@ use yii\web\View;
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                     <img src="<?php echo $user->profileImage; ?>" alt="Profile image" class="rounded-circle">
                     <h2><?php echo $user->fullname; ?></h2>
-                    <h3><?php echo $user->role->translatedName; ?></h3>
                 </div>
             </div>
 
@@ -92,11 +91,6 @@ use yii\web\View;
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label "><?php echo Yii::t('system.content', 'Full name'); ?></div>
                                 <div class="col-lg-9 col-md-8"><?php echo $user->fullname; ?></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label"><?php echo Yii::t('system.content', 'Role'); ?></div>
-                                <div class="col-lg-9 col-md-8"><?php echo $user->role->translatedName; ?></div>
                             </div>
 
                             <div class="row">
