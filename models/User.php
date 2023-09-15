@@ -7,6 +7,12 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 
 class User extends base\User {
+    public string $new_password = '';
+
+    public function getDevices() {
+        return $this->hasMany(Device::class, ['user_id' => 'id']);
+    }
+
     public function getFullname(): string {
         return $this->surname . ' ' . $this->name;
     }

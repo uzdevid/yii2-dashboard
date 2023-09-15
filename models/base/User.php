@@ -42,13 +42,12 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'last_activity_time', 'last_update_time', 'create_time', 'role_id'], 'default', 'value' => null],
-            [['user_id', 'last_activity_time', 'last_update_time', 'create_time', 'role_id'], 'integer'],
+            [['user_id', 'last_activity_time', 'last_update_time', 'create_time'], 'default', 'value' => null],
+            [['user_id', 'last_activity_time', 'last_update_time', 'create_time'], 'integer'],
             [['email', 'surname', 'name', 'language', 'password', 'create_time'], 'required'],
             [['email', 'surname', 'name', 'image', 'password'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 5],
             [['email'], 'unique'],
-            [['role_id'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['role_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
