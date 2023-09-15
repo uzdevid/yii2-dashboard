@@ -34,6 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php echo GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
+                        'pager' => [
+                            'class' => 'yii\bootstrap5\LinkPager',
+                            'maxButtonCount' => 15,
+                            'options' => [
+                                'tag' => 'nav',
+                                'class' => 'd-flex justify-content-center',
+                            ]
+                        ],
                         'columns' => [
                             [
                                 'attribute' => 'id',
