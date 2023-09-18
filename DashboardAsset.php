@@ -5,12 +5,6 @@ namespace uzdevid\dashboard;
 use yii\web\AssetBundle;
 use yii\web\View;
 
-/**
- * Main application asset bundle.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
 class DashboardAsset extends AssetBundle {
     public $sourcePath = '@npm/dashboard-assets';
     public $css = [
@@ -27,6 +21,7 @@ class DashboardAsset extends AssetBundle {
         'css/dashboard.css',
         'css/main.css',
     ];
+    
     public $js = [
         [
             'js/jquery.js',
@@ -48,11 +43,11 @@ class DashboardAsset extends AssetBundle {
             'position' => View::POS_HEAD
         ],
         'js/dashboard.js',
-        //
         'js/main.js',
     ];
+
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset'
+        \yii\web\YiiAsset::class,
+        \yii\bootstrap5\BootstrapAsset::class,
     ];
 }

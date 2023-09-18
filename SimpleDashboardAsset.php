@@ -4,12 +4,6 @@ namespace uzdevid\dashboard;
 
 use yii\web\AssetBundle;
 
-/**
- * Main application asset bundle.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
 class SimpleDashboardAsset extends AssetBundle {
     public $sourcePath = '@npm/dashboard-assets';
     public $css = [
@@ -18,13 +12,15 @@ class SimpleDashboardAsset extends AssetBundle {
         'css/dashboard.css',
         'css/main.css',
     ];
+
     public $js = [
         'libraries/bootstrap/js/bootstrap.bundle.min.js',
         'libraries/tinymce/tinymce.min.js',
         'js/dashboard.js',
     ];
+
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset',
+        \yii\web\YiiAsset::class,
+        \yii\bootstrap5\BootstrapAsset::class,
     ];
 }

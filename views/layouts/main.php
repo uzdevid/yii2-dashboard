@@ -1,5 +1,6 @@
 <?php
 
+use app\assets\MainAsset;
 use uzdevid\dashboard\DashboardAsset;
 use uzdevid\dashboard\text\TextManagerAssets;
 use uzdevid\dashboard\widgets\Footer\Footer;
@@ -13,9 +14,6 @@ use uzdevid\dashboard\widgets\Toaster\ToasterAsset;
 use yii\bootstrap5\Breadcrumbs;
 use yii\web\View;
 
-/** @var string $content */
-/** @var View $this */
-
 DashboardAsset::register($this);
 ToasterAsset::register($this);
 ModalPageAsset::register($this);
@@ -24,6 +22,13 @@ OffCanvasPageAsset::register($this);
 if (class_exists(TextManagerAssets::class)) {
     TextManagerAssets::register($this);
 }
+
+if (class_exists(MainAsset::class)) {
+    MainAsset::register($this);
+}
+
+/** @var string $content */
+/** @var View $this */
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
